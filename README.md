@@ -5,6 +5,22 @@ Score = raw final-layer MSE x max(0.1, FLOPs / 2^41), averaged over networks. No
 moment closure (mean, covariance, third and fourth cumulants propagated layer by layer and passed through the ReLU with
 Edgeworth and Mehler expansions). Nothing is fitted to Monte Carlo targets.
 
+## Selected submissions
+
+Two submissions were selected on the AIcrowd platform for the official Phase 2 evaluation (both graded, 100/100
+networks, no failures):
+
+| selected submission | official score (adjusted) | raw final-layer MSE | FLOP budget used | why it was selected |
+|---|---:|---:|---:|---|
+| **[337631](submissions/337631)** | **1.8608e-9** | 1.2106e-8 | 15.36 % | **our best adjusted score**: the cheapest member of the family (elder-basis cap 256 and the pointwise final Strassen combine) |
+| **[337577](submissions/337577)** | 1.8671e-9 | **1.1741e-8** | 15.89 % | **our most accurate graded estimate**: it keeps the elder-basis cap at 320, which costs 0.5 % more FLOP budget and buys 3 % lower raw MSE |
+
+The two differ by exactly one line of `bank.py` (the rank cap of the shared elder basis, 320 in 337577 and 256 in 337631);
+`estimator.py`, `pk4.py` and `fmm.py` are byte-identical between them. 337631 is the better score under the competition
+metric, raw MSE x max(0.1, FLOPs / 2^41); 337577 is the better estimator if accuracy alone is judged. The distilled program
+in [`distilled_submission/`](distilled_submission/) reproduces the statistics of this family (it was built from 337479, the
+base the two selected submissions descend from, with the cap set to 320, i.e. the 337577 statistics).
+
 This repository has two parts.
 
 | folder | what it is | lines of Python |
@@ -14,15 +30,15 @@ This repository has two parts.
 
 ## `submissions/`: the graded code
 
-Four graded uploads of one estimator family. `estimator.py` and `pk4.py` are byte-identical across the four; they differ
+Four graded uploads of one estimator family; the two selected ones are in bold. `estimator.py` and `pk4.py` are byte-identical across the four; they differ
 only in `bank.py` (the shared elder-basis rank cap) and `fmm.py` (the final Strassen combine).
 
 | folder | submission | official score | raw final-layer MSE | FLOP budget used | change |
 |---|---|---:|---:|---:|---|
 | [`337479`](submissions/337479) | 337479 | 1.8841e-9 | 1.1742e-8 | 16.04 % | base: shared elder basis (cap 320), slice row repair, exact switch restructuring |
 | [`337563`](submissions/337563) | 337563 | 1.8783e-9 | 1.2106e-8 | 15.50 % | elder cap 320 -> 256 (one line) |
-| [`337577`](submissions/337577) | 337577 | 1.8671e-9 | 1.1741e-8 | 15.89 % | pointwise Strassen 7-to-4 combine (10 lines) |
-| [`337631`](submissions/337631) | 337631 | **1.8608e-9** | 1.2106e-8 | 15.36 % | both edits; our best official score |
+| **[`337577`](submissions/337577)** | **337577** | **1.8671e-9** | **1.1741e-8** | **15.89 %** | **pointwise Strassen 7-to-4 combine (10 lines); SELECTED (most accurate)** |
+| **[`337631`](submissions/337631)** | **337631** | **1.8608e-9** | **1.2106e-8** | **15.36 %** | **both edits; SELECTED (best official score)** |
 
 All four completed 100/100 networks with no failures, max wall 96.8-98.0 s, max residual 0.37 s. Each folder has its own
 README with the full audit, `manifest.json`, `SHA256.txt` and the platform receipt. Graded on whestbench 0.16.x with
