@@ -3,7 +3,8 @@
 Exact code uploaded as [submission 337577](https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/337577) on 2026-10-21.
 **Graded successfully: official adjusted score 1.8670546715e-9**, final-layer MSE **1.1740799639e-8**,
 at **15.8916%** mean public FLOP budget use. All 100 networks completed with zero failures.
-This is the best official score archived in this repository: 0.5973% below submission 337563 and 0.9031% below submission 337479.
+At upload this was the team's best official score, 0.5973% below submission 337563 and 0.9031% below submission 337479;
+it was later superseded by [submission 337631](../337631).
 
 ## Code and mechanism
 
@@ -37,8 +38,8 @@ The full-precision top-level score is authoritative; rounded per-network score r
 This establishes the official result for this artifact, without retroactively completing the interrupted local run
 or the unperformed independent confirmation. No current leaderboard rank is claimed.
 
-See [the complete response](graded/platform_grading_337577_complete.json), [audit](graded/official_audit.json)
-and [fetch receipt](graded/fetch_receipt.json).
+See the [official audit](graded/official_audit.json). The full per-network API response stays in the team's private
+research archive.
 
 ## Historical local evidence and limits
 
@@ -55,12 +56,15 @@ The user approved this exact artifact with these limitations. No complete lifecy
 
 ## Files and provenance
 
-- `estimator.py`, `bank.py`, `pk4.py`, `fmm.py`, `LICENSE`, `manifest.json`: exact extracted archive members.
-- `submitted.tar.gz`: original uploaded archive, SHA-256 `9a01aa8d03f3382ff0cc0e351af7b3054e68af772922c2b39eec0522bfb92aad`.
+- `estimator.py`, `bank.py`, `pk4.py`, `fmm.py`, `LICENSE`, `manifest.json`: exact extracted archive members. The
+  uploaded archive has SHA-256 `9a01aa8d03f3382ff0cc0e351af7b3054e68af772922c2b39eec0522bfb92aad`, recorded in
+  `platform_receipt.json`.
 - `platform_receipt.json`: original upload-ID binding, preserved with its then-unknown official status.
-- `graded/`: fetched official response, eligibility audit and fetch provenance.
-- `validation/`: original protocol, source freeze, final local boundary and archive content audit.
-- `SHA256.txt`: hashes of the archived payload and evidence files.
+- [graded/official_audit.json](graded/official_audit.json): the official eligibility audit (aggregates, maxima and checks).
+- `SHA256.txt`: hashes of every file shipped in this folder.
+
+The original protocol, source freeze, local boundary and archive content audit stay in the team's private research
+archive.
 
 Source records: arc4 `research/e6_w_pointwise_final_20261021`. Pre-upload protocol gates and audit statements
 are historical records; the final boundary and upload receipt document the actual incomplete qualification and

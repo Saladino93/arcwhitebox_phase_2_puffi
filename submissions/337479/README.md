@@ -2,7 +2,7 @@
 
 This is the exact artifact uploaded as [submission 337479](https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/337479)
 on 2026-10-21. **Graded successfully: official score 1.8840699578e-9**, final-layer MSE 1.1741755888e-8 at 16.0351 % mean
-public FLOP budget use. All 100 networks completed with zero failures. It is the repository's best graded submission:
+public FLOP budget use. All 100 networks completed with zero failures. At upload it was the team's best graded submission:
 
 - **4.99 % lower** than the previous team best, submission 337428 (1.9829771968e-9). 337428 came from the arc4 experiment
   `e6_history_lite_final_combine`, which is not archived as an example here.
@@ -96,10 +96,11 @@ lower bill. The top-level official score is authoritative. Per-network rows in t
 
 Records:
 
-- [graded/platform_grading_337479_complete.json](graded/platform_grading_337479_complete.json): the full final API response.
-- [graded/terminal_receipt.json](graded/terminal_receipt.json): the terminal receipt.
+- [graded/terminal_receipt.json](graded/terminal_receipt.json): the terminal receipt (official aggregates and maxima).
 - [graded/official_terminal_review.json](graded/official_terminal_review.json): an 86-check independent audit of the grade.
-- [platform_receipt.json](platform_receipt.json): the upload receipt.
+- [platform_receipt.json](platform_receipt.json): the upload receipt, with the SHA-256 of the uploaded archive.
+
+The full per-network API response is kept in the team's private research archive and is not shipped here.
 
 ## How it was chosen
 
@@ -126,18 +127,15 @@ The exact frozen archive was uploaded once, under the user's standing submission
 
 ## Files
 
-- `estimator.py`, `bank.py`, `pk4.py`, `fmm.py`, `LICENSE`: the five submitted payloads. They are byte-identical to the
-  members of `submitted.tar.gz`.
-- `submitted.tar.gz`: the uploaded archive, 93,678 bytes, sha256
-  `a7d47a1e0314211e6d315907b665008e7be432f8aa5c57d8130d34cce8dbaba1`. It includes the SDK [manifest](manifest.json)
-  (`min_version` 3.10). [SHA256.txt](SHA256.txt) lists every hash.
-- `validation/`: compact copies of the source receipts.
-  - [protocol.json](validation/protocol.json): the registered hypothesis and gates.
-  - [experiment_receipt.json](validation/experiment_receipt.json): the experiment receipt.
-  - [local_qualification_boundary.json](validation/local_qualification_boundary.json): the local qualification boundary.
-  - [fresh24_confirmation_boundary.json](validation/fresh24_confirmation_boundary.json): the fresh-24 confirmation.
-  - [smoke_audit.json](validation/smoke_audit.json): the smoke audit.
-  - [submission_validation.json](validation/submission_validation.json): the package validator result.
+- `estimator.py`, `bank.py`, `pk4.py`, `fmm.py`, `LICENSE`: the five submitted payloads, byte-identical to the
+  members of the uploaded archive (93,678 bytes, sha256
+  `a7d47a1e0314211e6d315907b665008e7be432f8aa5c57d8130d34cce8dbaba1`, recorded in `platform_receipt.json`).
+- [manifest.json](manifest.json): the SDK manifest included in the archive (`min_version` 3.10).
+- `graded/`: the two official grading records listed above.
+- [SHA256.txt](SHA256.txt): hashes of every file shipped in this folder (`shasum -a 256 -c SHA256.txt`).
+
+The local validation receipts (protocol, experiment receipt, qualification boundaries, smoke audit and package
+validator result) stay in the team's private research archive.
 
 The full ledgers, client audits and reviews are in the arc4 repo under
 `research/e6_shared_basis_qualified_backend_20261021`.

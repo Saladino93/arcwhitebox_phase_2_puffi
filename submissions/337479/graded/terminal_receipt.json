@@ -1,0 +1,85 @@
+{
+  "experiment": "e6_shared_basis_qualified_backend_20261021",
+  "status": "officially_qualified_new_best_goal_1p9e9_achieved",
+  "created_utc": "2026-10-21T06:42:16.818997+00:00",
+  "submission_id": 337479,
+  "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/337479",
+  "archive": "research/e6_shared_basis_qualified_backend_20261021/packaging/e6_shared_basis_qualified_backend_submission.tar.gz",
+  "archive_sha256": "a7d47a1e0314211e6d315907b665008e7be432f8aa5c57d8130d34cce8dbaba1",
+  "candidate_files": {
+    "estimator.py": "6c10a3b341d31a998e3b3f520424adb7a59d7c7d70a5b8fd1b921d9f4c0f44c2",
+    "bank.py": "983ec5944de7e99301b5ac7a975b02ef7e0ffa3c6dacc112da59c8ccb98d270e",
+    "pk4.py": "afb3d4046fac8557e392ddad5dbe42a48ae3a86bef96d6d3fe8018c9ac5a0bd6",
+    "fmm.py": "640b4c17d281dc8a11da9363727016aeb2ec616a17a7464cc10c83a238ff4cae",
+    "LICENSE": "59ecd5ea2d7418e0783d1c07485b455e85fb6918b70e549896c042da08398a46"
+  },
+  "official_adjusted_score": 1.8840699578301244e-09,
+  "official_final_layer_mse": 1.1741755887584304e-08,
+  "official_public_flops_percent": 16.03509543790915,
+  "previous_official": {
+    "submission_id": 337428,
+    "adjusted_score": 1.9829771968032613e-09
+  },
+  "official_improvement_percent": 4.9878152473253,
+  "qualification": {
+    "networks_completed": 100,
+    "networks_failed": 0,
+    "official_smoke_passes": 5,
+    "official_smoke_failures": 0,
+    "setup_executions": 5,
+    "maximum_residual_seconds": 0.37359046699999965,
+    "maximum_prediction_seconds": 98.0153718190013,
+    "maximum_setup_seconds": 2.702709479999612,
+    "residual_margin_seconds": 0.026409533000000374,
+    "required_flopscope_client_server": "0.12.3",
+    "official_runtime_whestbench": "0.16.1",
+    "upload_and_local_smoke_sdk": "0.16.2",
+    "independent_terminal_checks": 86
+  },
+  "evidence_sha256": {
+    "research/e6_shared_basis_qualified_backend_20261021/review/official_terminal_review.json": "2b4394c9cf83095c595d2da0f9ad97957b0bc49362f71539bc1cc596e97140fb",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/status/submission_337479_20261021T063959939635Z.raw.json": "09f02e01b8eeb3d4f4182f67bf2328ea2a020a58c936e7724ee39c75de26eb06",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/status/submission_337479_20261021T063959939635Z.audit.json": "a2b29e61e29bd13ef2a30592f2873b759e90f7663e6741e60f4a033503fe93a0",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/root_upload_release.json": "110e0dee29497308b440540c9f947c536421384775ef1f4672d1b8c922ed1113",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/upload_id_receipt.json": "6dbe2b8d38ea2798e217e7be687d0a217c31228dd79f9d3c6c6d53797eb66dcc",
+    "research/e6_shared_basis_qualified_backend_20261021/confirmation/boundary.json": "5379321cca1db5512e90728176fc2addc391b67b0fbc9925ca5adab022a78cef",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/terminal_leader_refresh/receipt.json": "ad5aefd3a94a0c47a4f16eee0d9d94d0ab5ca287f4accc2d61a0e805a169298a"
+  },
+  "processes": {
+    "watch_session": 14616,
+    "watch_exit_code": 0,
+    "collector_session": 97264,
+    "collector_exit_code": 0
+  },
+  "proxy_transfer": {
+    "exposed8_gain_percent": 2.7742452285983066,
+    "independent24_gain_percent": 4.641612213016607,
+    "official_gain_percent": 4.9878152473253,
+    "interpretation": "Independent gain direction and approximate magnitude transferred in this same-backend comparison. This is one successful transfer, not a general guarantee."
+  },
+  "research_cost": {
+    "elapsed_minutes_since_W_registration": 132.1022782,
+    "confirmation_minutes_through_independent_audit": 27.448726583333332,
+    "official_upload_watch_minutes": 32.65917205,
+    "scope": "Includes environmental recovery, source review, confirmation and official waiting; original interrupted evidence and budget reallocations preserved."
+  },
+  "decision": "Retain W as new strongest officially graded artifact. Stop automatic work on achieved1.9e-9 goal. User1.7e-9 aspiration and current leader remain unmet; no broader completion claim.",
+  "goal_1p9e9_achieved": true,
+  "goal_1p7e9_achieved": false,
+  "broader_leaderboard_objective_achieved": false,
+  "current_leader": {
+    "id": "337381",
+    "status": "GRADED",
+    "score": 1.345376704281146e-09,
+    "scoreSecondary": 1.1040939984496845e-08,
+    "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/337381"
+  },
+  "leader_fetched_utc": "2026-10-21T06:40:38.722832+00:00",
+  "limitations": [
+    "Top-level official score and scoreSecondary are authoritative; rounded per-network public rows are not used to reconstruct them.",
+    "FLOPs percentage is100 times the reported public mean_compute_utilization aggregate, not an asserted100-network reconstruction.",
+    "Official API does not report independent RSS or server archive SHA; passing grade and upload-action bindings have those explicit limits.",
+    "Runtime SDK and upload SDK versions remain separately reported; FlopScope client/server must both be0.12.3.",
+    "No new leaderboard claim: a current authoritative leaderboard refresh is a separate root task."
+  ]
+}

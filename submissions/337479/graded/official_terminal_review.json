@@ -1,0 +1,671 @@
+{
+  "checks": [
+    {
+      "name": "graphql_no_errors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "graded_identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "100_complete_zero_failed_zero_inflight",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "100_unique_completed_rows",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "untruncated",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phase2_config",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "official_smokes_passed_positive_count_zero_failures",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "flopscope_version",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "flopscope_client_version",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "flopscope_server_version",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no_meter_patches",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "flops_used_cap",
+      "passed": true,
+      "detail": {
+        "max": 371792230968.0,
+        "cap": 2199023255552
+      }
+    },
+    {
+      "name": "participant_predict_wall_s_cap",
+      "passed": true,
+      "detail": {
+        "max": 98.0153718190013,
+        "cap": 120.0
+      }
+    },
+    {
+      "name": "residual_wall_time_s_cap",
+      "passed": true,
+      "detail": {
+        "max": 0.37359046699999965,
+        "cap": 0.4
+      }
+    },
+    {
+      "name": "budget_exhausted_false",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "time_exhausted_false",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "residual_wall_time_exhausted_false",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "combined_budget_exhausted_false",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "authoritative_setup_executions_within_5s",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all_official_workers_have_setup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "nonnull_setup_observations_match_executions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "authoritative_top_level_score_and_final_mse",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reported_public_aggregate_compute_utilization",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "transport_and_saved_raw_binding",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/root_upload_release.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/upload_id_receipt.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/SOURCE_FREEZE.json",
+      "passed": true
+    },
+    {
+      "name": "upload_release_id_bindings",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/RUN.md",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/collect_status.py",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/fixtures/official_F_337428_terminal.raw.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/fixtures/original_F_collect_status.py",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/fixtures/original_F_test_status.py",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/fixtures/provenance.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/official_refresh/RUN.md",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/official_refresh/fetch_sources.py",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/official_refresh/preparation_receipt.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/receipt.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/sdk_submit_once.py",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/source_validation_v2.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_status.py",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_status.stderr.log",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_status.stdout.log",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_status_revision2.stderr.log",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_status_revision2.stdout.log",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_status_v2.stderr.log",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_status_v2.stdout.log",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_submit_once.py",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_submit_once.stderr.log",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_submit_once.stdout.log",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/upload_launcher_v2.diff",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/upload_once.py",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/RUN.md",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/SOURCE_FREEZE.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/collect_status.py",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/fixtures/official_F_337428_terminal.raw.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/fixtures/original_F_collect_status.py",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/fixtures/original_F_test_status.py",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/fixtures/provenance.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/receipt.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/submission_workflow_review.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/test_status.py",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/test_status.stderr.log",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/test_status.stdout.log",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/test_status_v2.stderr.log",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/test_status_v2.stdout.log",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/upload_once.py",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/client_environment_recovery_1/pilot/run/audit.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/lifecycle_environment_recovery_1/pilot/run/audit.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/smoke/audit.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/selection/remaining4/audit.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/confirmation/paired_risk_audit.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/review/fresh24_terminal_review.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/review/submission_workflow_review_v2.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/official_refresh/receipt.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/SOURCE_FREEZE.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/confirmation/boundary.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/boundary.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/source_audit.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/review/source_review.json",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/packaging/e6_shared_basis_qualified_backend_submission.tar.gz",
+      "passed": true
+    },
+    {
+      "name": "exact_payload_and_sdk_manifest",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/upload_acknowledgement.stdout.log",
+      "passed": true
+    },
+    {
+      "name": "acknowledged_submission_id",
+      "passed": true
+    },
+    {
+      "name": "binding:research/e6_shared_basis_qualified_backend_20261021/submission_preparation/collect_status.py",
+      "passed": true
+    },
+    {
+      "name": "collector_agrees_terminal_qualification",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "maxima": {
+    "flops_used": 371792230968.0,
+    "participant_predict_wall_s": 98.0153718190013,
+    "residual_wall_time_s": 0.37359046699999965,
+    "setup_execution_wall_s": 2.702709479999612
+  },
+  "runtime_environment": {
+    "whestbench_version": "0.16.1",
+    "flopscope_version": "0.12.3",
+    "flopscope_server_version": "0.12.3",
+    "numpy_version": "2.2.6",
+    "python_version": "3.10.21",
+    "flopscope_patches": [],
+    "flopscope_client_version": "0.12.3",
+    "participant_shim_version": "0.1.0",
+    "participant_python_version": "3.10.21"
+  },
+  "official_smoke_result": {
+    "passed": true,
+    "duration_ms": 33556.68763600261,
+    "worker_passes": 5,
+    "worker_failures": 0,
+    "error_code": null
+  },
+  "authoritative_adjusted_score": 1.8840699578301244e-09,
+  "authoritative_raw_final_layer_mse": 1.1741755887584304e-08,
+  "official_aggregates": {
+    "public": {
+      "score": 1.884e-09,
+      "score_secondary": 1.174e-08,
+      "sampling_mse": 1.132e-06,
+      "adjusted_final_layer_score": 1.884e-09,
+      "final_layer_mse": 1.174e-08,
+      "all_layers_mse": 4.643e-09,
+      "best_mlp_adjusted_final_layer_score": 1.378e-09,
+      "worst_mlp_adjusted_final_layer_score": 2.456e-09,
+      "mean_score_multiplier": 0.1603509543790915,
+      "mean_compute_utilization": 0.1603509543790915,
+      "mean_effective_compute": 352615477729.58,
+      "n_failed_mlps": 0,
+      "failure_breakdown": {
+        "budget_exhausted": 0,
+        "time_exhausted": 0,
+        "residual_wall_time_exhausted": 0,
+        "combined_budget_exhausted": 0,
+        "error": 0
+      }
+    }
+  },
+  "official_public_mean_flops_percent": 16.03509543790915,
+  "setup_evidence": {
+    "authoritative_source": "results.setup_executions",
+    "execution_count": 5,
+    "worker_count": 5,
+    "nonnull_per_mlp_count": 5,
+    "null_per_mlp_indices": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "setup_executions": [
+      {
+        "worker_id": "w-2",
+        "generation": 0,
+        "flops": 3329756696,
+        "wall_s": 2.6091743710021547,
+        "kernel_ns": 305301532,
+        "comms_ns": 229333351,
+        "error_code": "SUCCESS"
+      },
+      {
+        "worker_id": "w-0",
+        "generation": 0,
+        "flops": 3329756696,
+        "wall_s": 2.649013239000169,
+        "kernel_ns": 316115224,
+        "comms_ns": 235381788,
+        "error_code": "SUCCESS"
+      },
+      {
+        "worker_id": "w-3",
+        "generation": 0,
+        "flops": 3329756696,
+        "wall_s": 2.629122840000491,
+        "kernel_ns": 309421394,
+        "comms_ns": 230801911,
+        "error_code": "SUCCESS"
+      },
+      {
+        "worker_id": "w-4",
+        "generation": 0,
+        "flops": 3329756696,
+        "wall_s": 2.702709479999612,
+        "kernel_ns": 327468833,
+        "comms_ns": 238781918,
+        "error_code": "SUCCESS"
+      },
+      {
+        "worker_id": "w-1",
+        "generation": 0,
+        "flops": 3329756696,
+        "wall_s": 2.6848884239989275,
+        "kernel_ns": 323569377,
+        "comms_ns": 236786594,
+        "error_code": "SUCCESS"
+      }
+    ],
+    "null_semantics": "Absent observation, never zero; worker setup success and cap checks remain mandatory."
+  },
+  "created_utc": "2026-10-21T06:40:26.719048+00:00",
+  "submission_id": 337479,
+  "source_sha256": "7358f2d5669b57b107c167d9a9979585c1db8962bb92026f77100ca62c11ffb4",
+  "raw_response_sha256": "09f02e01b8eeb3d4f4182f67bf2328ea2a020a58c936e7724ee39c75de26eb06",
+  "archive_sha256": "a7d47a1e0314211e6d315907b665008e7be432f8aa5c57d8130d34cce8dbaba1",
+  "candidate_files": {
+    "estimator.py": "6c10a3b341d31a998e3b3f520424adb7a59d7c7d70a5b8fd1b921d9f4c0f44c2",
+    "bank.py": "983ec5944de7e99301b5ac7a975b02ef7e0ffa3c6dacc112da59c8ccb98d270e",
+    "pk4.py": "afb3d4046fac8557e392ddad5dbe42a48ae3a86bef96d6d3fe8018c9ac5a0bd6",
+    "fmm.py": "640b4c17d281dc8a11da9363727016aeb2ec616a17a7464cc10c83a238ff4cae",
+    "LICENSE": "59ecd5ea2d7418e0783d1c07485b455e85fb6918b70e549896c042da08398a46"
+  },
+  "evidence_sha256": {
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/status/submission_337479_20261021T063959939635Z.raw.json": "09f02e01b8eeb3d4f4182f67bf2328ea2a020a58c936e7724ee39c75de26eb06",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/status/submission_337479_20261021T063959939635Z.metadata.json": "fc9a2464cbc7601af23e075a828724231b9fa7370b7f1447e2992b0984bd28b9",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/status/submission_337479_20261021T063959939635Z.audit.json": "a2b29e61e29bd13ef2a30592f2873b759e90f7663e6741e60f4a033503fe93a0",
+    "research/e6_shared_basis_qualified_backend_20261021/review/check_official_terminal.py": "7358f2d5669b57b107c167d9a9979585c1db8962bb92026f77100ca62c11ffb4",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/root_upload_release.json": "110e0dee29497308b440540c9f947c536421384775ef1f4672d1b8c922ed1113",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/upload_id_receipt.json": "6dbe2b8d38ea2798e217e7be687d0a217c31228dd79f9d3c6c6d53797eb66dcc",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/SOURCE_FREEZE.json": "47d22df764a81cb78ec7edbaa34052c9116b8107feea337519a884a787881018",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/RUN.md": "fd177e5bd16f26356267351d0d5cb4c73575666e4de247110bd99f93802a84f1",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/collect_status.py": "b7951f7c1fdf77fc570cda899ee5be479793e9aa908aaa5cf98d70f3d8f07fcb",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/fixtures/official_F_337428_terminal.raw.json": "014dbab7fc0088bd4bffe13951c51751194db700e0760dd3fbd7a017d2846c74",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/fixtures/original_F_collect_status.py": "d7e9481ca355063d20ffee91b1f87b91312a99009533f34733f7a38b97a2ca5f",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/fixtures/original_F_test_status.py": "01be080af4197c6b705aebf70afe4e9e610117b06e7f3b15fff978ba10ad2b8d",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/fixtures/provenance.json": "1194de2249b3bc01ddeea2cb9034faffb8c370c87629f7b8da4fb266895c56c1",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/official_refresh/RUN.md": "ec8d700d2223d0de343d198b28eba1dec9b148a4a3e60a9b01b9b253c2cb197a",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/official_refresh/fetch_sources.py": "e5ce2ab640c291b554041a3933c9a2247b74737ce16a6b205dd1b21e24725ccb",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/official_refresh/preparation_receipt.json": "f5880855e190397a002c74d55bf59be108ff70ac4ed40a2d71f9ed2eb68036ba",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/receipt.json": "693972f08766dd7672d5e35d43b1b2c0cacfc407462285cbd58ed0aaa6abb6aa",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/sdk_submit_once.py": "6f3cd2d9a6cd3f1d0a0219d35e30f1ad6f7810bceeab04ab9ffffdb1382f9d20",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/source_validation_v2.json": "a51bf316896b694cd98268f7559f190c4cbf0aac4ba24a574dd551a898af862a",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_status.py": "8cf881feca484a808fbb71528cf5c278dba90d5a9f6e7b8325ee5bd03cde33b2",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_status.stderr.log": "ce895947b8ffcb2e77addf8382970fd1c07ecab9486fbbfca209319a47c37f4f",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_status.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_status_revision2.stderr.log": "4e9583fbd8b7dfd17b1b52f963bca5e078ab351e78d6c9726b2c05ff184c10db",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_status_revision2.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_status_v2.stderr.log": "4e9583fbd8b7dfd17b1b52f963bca5e078ab351e78d6c9726b2c05ff184c10db",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_status_v2.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_submit_once.py": "e3a26fb24fbd0369c157138f04aeec976425d7fa2b3c075a08464a3b1e0c4702",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_submit_once.stderr.log": "13aa28b8975b9848d47830118b970a85378c7bc13cdf35967aafc5dfbb341826",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/test_submit_once.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/upload_launcher_v2.diff": "2655d6d94ff76c6f6a5cc1049a2fa4a3f09848fc599c7997371bd628d75ec24a",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/upload_once.py": "0f54fadf03dcabcf6957480d8e905a1d283237c5cec39439eef96e2be41b0900",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/RUN.md": "96654f5e204534c303a4da68e982b8091ee8713b7d2daf9f65bda0847a659098",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/SOURCE_FREEZE.json": "49842b3cc9459f94774612be1d880c794b7297eb3c1dc5be9b2d72456af05940",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/collect_status.py": "b7951f7c1fdf77fc570cda899ee5be479793e9aa908aaa5cf98d70f3d8f07fcb",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/fixtures/official_F_337428_terminal.raw.json": "014dbab7fc0088bd4bffe13951c51751194db700e0760dd3fbd7a017d2846c74",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/fixtures/original_F_collect_status.py": "d7e9481ca355063d20ffee91b1f87b91312a99009533f34733f7a38b97a2ca5f",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/fixtures/original_F_test_status.py": "01be080af4197c6b705aebf70afe4e9e610117b06e7f3b15fff978ba10ad2b8d",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/fixtures/provenance.json": "1194de2249b3bc01ddeea2cb9034faffb8c370c87629f7b8da4fb266895c56c1",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/receipt.json": "2a31e39961300fec5464968cba490a0602fc16f0555f691e4867f57909c583e3",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/submission_workflow_review.json": "befc38d29b6c15e02925aa2408de3efa792d7af1585faf5dc2fc6e1dc6f9f546",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/test_status.py": "8cf881feca484a808fbb71528cf5c278dba90d5a9f6e7b8325ee5bd03cde33b2",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/test_status.stderr.log": "ce895947b8ffcb2e77addf8382970fd1c07ecab9486fbbfca209319a47c37f4f",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/test_status.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/test_status_v2.stderr.log": "4e9583fbd8b7dfd17b1b52f963bca5e078ab351e78d6c9726b2c05ff184c10db",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/test_status_v2.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/v1/upload_once.py": "16d3b9e3358845c54d64ace74c14b2b9bc98e3e46ba48afabd5e2b5f52944cbe",
+    "research/e6_shared_basis_qualified_backend_20261021/client_environment_recovery_1/pilot/run/audit.json": "35149e186475882ca080c2c6f023640994f353639660b27376ac4d5e18e684c7",
+    "research/e6_shared_basis_qualified_backend_20261021/lifecycle_environment_recovery_1/pilot/run/audit.json": "a00b9c8f1d2dabdfd220b885382702c0464a0626b1e2a05e6ad27043ae234783",
+    "research/e6_shared_basis_qualified_backend_20261021/smoke/audit.json": "b66bd0b8d438d7dce1f3592fc3755fcd0c720f262673be950882e726711e9376",
+    "research/e6_shared_basis_qualified_backend_20261021/selection/remaining4/audit.json": "67a9594fe3b51acd89f22375583711a302fb2836a45c6113c3fa81aaa544c53e",
+    "research/e6_shared_basis_qualified_backend_20261021/confirmation/paired_risk_audit.json": "df715a888bbdd12cfd2b95bf65473890113404b69f5a0beba2fff0f3498d1237",
+    "research/e6_shared_basis_qualified_backend_20261021/review/fresh24_terminal_review.json": "5f5040e4b23ee3e2d4283ec4351665289cc9e81f15614f5147ca5c4e80b9af26",
+    "research/e6_shared_basis_qualified_backend_20261021/review/submission_workflow_review_v2.json": "8f14eb2fd549e8318e80ee2750d0bef1f0a599fc08a3ff5f4d670e2f23e0e81b",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/official_refresh/receipt.json": "4dca26389c3952dbabaf649ea57345d8b275db5667f9ec21dd606e4e83645779",
+    "research/e6_shared_basis_qualified_backend_20261021/confirmation/boundary.json": "5379321cca1db5512e90728176fc2addc391b67b0fbc9925ca5adab022a78cef",
+    "research/e6_shared_basis_qualified_backend_20261021/boundary.json": "94b81e114080ea52d6c0ec1122a12582cc5e31e2ba76bd659e091e1a64084a9b",
+    "research/e6_shared_basis_qualified_backend_20261021/source_audit.json": "0d3d8843e1dbbdc63670fe0dcd17b829937e530efb84ef9c5cb5af9c7b5f6b9a",
+    "research/e6_shared_basis_qualified_backend_20261021/review/source_review.json": "e5b5114bdf19c1b512d6ce13251bbdb33e1f696e07902985777206f6c506db77",
+    "research/e6_shared_basis_qualified_backend_20261021/packaging/e6_shared_basis_qualified_backend_submission.tar.gz": "a7d47a1e0314211e6d315907b665008e7be432f8aa5c57d8130d34cce8dbaba1",
+    "research/e6_shared_basis_qualified_backend_20261021/submission_preparation/upload_acknowledgement.stdout.log": "77c94b8cae02ee3d877bd9dac7a6295b9033e22a742f364a00bbf57403f44cb1"
+  },
+  "previous_official": {
+    "submission_id": 337428,
+    "adjusted_score": 1.9829771968032613e-09
+  },
+  "improves_previous_official": true,
+  "relative_official_improvement_percent": 4.9878152473253,
+  "official_target_1p9e9_met": true,
+  "disclosures": [
+    "Top-level official score and scoreSecondary are authoritative; rounded per-network public rows are not used to reconstruct them.",
+    "FLOPs percentage is100 times the reported public mean_compute_utilization aggregate, not an asserted100-network reconstruction.",
+    "Official API does not report independent RSS or server archive SHA; passing grade and upload-action bindings have those explicit limits.",
+    "Runtime SDK and upload SDK versions remain separately reported; FlopScope client/server must both be0.12.3.",
+    "No new leaderboard claim: a current authoritative leaderboard refresh is a separate root task."
+  ],
+  "scope": "Independent standard-library saved terminal review after explicit root release; no network, inference, numerical imports, upload or candidate changes."
+}

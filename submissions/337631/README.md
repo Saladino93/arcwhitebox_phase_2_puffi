@@ -41,8 +41,8 @@ residual or combined-budget exhaustion flags were set. Direct official RSS is no
 full-precision top-level score is authoritative; rounded per-network rows are not used to reconstruct it.
 No current leaderboard rank is claimed; the leader at the time of upload was 337567 at 1.2952e-9.
 
-See [the complete response](graded/platform_grading_337631_complete.json), [audit](graded/official_audit.json)
-and [fetch receipt](graded/fetch_receipt.json).
+See the [official audit](graded/official_audit.json). The full per-network API response stays in the team's private
+research archive.
 
 ## Historical local evidence and limits
 
@@ -61,29 +61,18 @@ The user approved this exact artifact with these limitations under the submissio
 
 ## Files and provenance
 
-- `estimator.py`, `bank.py`, `pk4.py`, `fmm.py`, `LICENSE`, `manifest.json`: exact extracted archive members.
-- `submitted.tar.gz`: the uploaded archive, SHA-256 `9afc64478602acd060ab058a68dea6942db587e5fe31bee2e3c112a4275fbc85`.
+- `estimator.py`, `bank.py`, `pk4.py`, `fmm.py`, `LICENSE`, `manifest.json`: exact extracted archive members. The
+  uploaded archive has SHA-256 `9afc64478602acd060ab058a68dea6942db587e5fe31bee2e3c112a4275fbc85`, recorded in
+  `platform_receipt.json`.
 - `platform_receipt.json`: upload-ID binding, preserved with its then-unknown official status.
-- `graded/`: fetched official response, eligibility audit and fetch provenance.
-- `validation/`: protocol, source freeze, local boundary (the experiment receipt), archive content receipt, the
-  560–567 selection summary and the Linux cold-run result.
-- `SHA256.txt`: hashes of the archived payload and evidence files.
+- [graded/official_audit.json](graded/official_audit.json): the official eligibility audit (aggregates, maxima and checks).
+- `SHA256.txt`: hashes of every file shipped in this folder.
 
-Source records: arc4 `research/e6_combined_rank256_pointwise_20261021`. Packaging verified archive hash and exact
-member bytes; it did not rerun inference.
+Packaging verified the archive hash and exact member bytes; it did not rerun inference. The protocol, source freeze,
+local boundary, archive content receipt, 560–567 selection summary and Linux cold-run result stay in the team's
+private research archive.
 
 ## Readable implementation
 
-[`estimator_refactored/`](estimator_refactored/) contains the seven-module refactor ported
-from submission 337577 with the submission 337631 elder-basis cap, followed by an organizer-facing clarity pass.
-The clarity pass preserves exact predictions and FLOPs relative to the frozen initial refactor. Its evidence and limits are
-in [`estimator_refactored/VALIDATION.md`](estimator_refactored/VALIDATION.md).
-The refactor is unsubmitted; the official result above belongs to the original archived package.
-
-## Interactive local explainer
-
-[`explainer/index.html`](explainer/index.html) is a numeric debugger for the readable estimator.
-Clone or download the whole `explainer/` folder, including its large `data/` packets, then open `index.html`
-directly in a recent Chromium browser; no server or hosting is required. It displays observed per-layer
-estimator state and actual activation samples from public networks 500 and 501, with zero-based layers 0–15.
-See [`explainer/README.md`](explainer/README.md) for capture provenance, limits, and reproduction instructions.
+A trick-free numpy rewrite of this estimator family, with the organizers' K=3 estimator for comparison, is in
+[`../../distilled_submission/`](../../distilled_submission/).

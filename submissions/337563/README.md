@@ -22,7 +22,7 @@ The matched submission 337479 score was 1.8648954074e-9, a 1.214% development ga
 The independent 24-network confirmation **failed its registered superiority gate**: estimated adjusted score
 2.0542979085e-9 versus 2.0547264984e-9, only 0.0209% lower, with the one-sided 95% upper difference positive.
 The user subsequently approved this exact uncertain artifact for submission. The historical confirmation failure
-is preserved in `validation/confirmation_boundary.json`; the later official result does not rewrite it.
+is preserved in the team's private research archive; the later official result does not rewrite it.
 
 Local SDK/API, eight smoke cases, cold and continuous lifecycle checks passed. The saved official audit reports
 maximum prediction wall 101.8783 s, residual 0.371910 s, setup 2.81521 s, and maximum FLOPs 16.3506% of budget.
@@ -30,11 +30,15 @@ The official environment used FlopScope client/server 0.12.3. Direct official RS
 
 ## Files and provenance
 
-- `estimator.py`, `bank.py`, `pk4.py`, `fmm.py`, `LICENSE`, `manifest.json`: exact extracted archive members.
-- `submitted.tar.gz`: original uploaded archive, SHA-256 `7bf83c55643c39497c4bfdd075ea55ff8ce479418a5a838fb0627ed80cca6818`.
-- `platform_receipt.json`: upload-ID binding; `graded/`: saved complete official response and audit.
-- `validation/`: original protocol, freeze, local boundary, confirmation boundary and SDK validation.
-- `SHA256.txt`: hashes of the archived payload and evidence files.
+- `estimator.py`, `bank.py`, `pk4.py`, `fmm.py`, `LICENSE`, `manifest.json`: exact extracted archive members. The
+  uploaded archive has SHA-256 `7bf83c55643c39497c4bfdd075ea55ff8ce479418a5a838fb0627ed80cca6818`, recorded in
+  `platform_receipt.json`.
+- `platform_receipt.json`: upload-ID binding.
+- [graded/official_audit.json](graded/official_audit.json): the saved official audit (aggregates, maxima and checks).
+- `SHA256.txt`: hashes of every file shipped in this folder.
+
+The original protocol, source freeze, local and confirmation boundaries and SDK validation receipts stay in the
+team's private research archive.
 
 Source records: arc4 `research/e6_w_shared_rank256_20261021`. Historical receipts describe their status at creation;
 the saved official response above supersedes earlier pending/no-submission statuses. Packaging verified the archive

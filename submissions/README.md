@@ -3,7 +3,8 @@
 Each folder is the exact source of one graded upload, named by its AIcrowd submission number: `estimator.py` (the moment
 engine), `bank.py` (the third-cumulant source bank and its fourth-cumulant reads), `pk4.py` (tree-level fourth cumulants),
 `fmm.py` (the Strassen-Winograd matrix-multiplication engine), plus `README.md` (audit), `manifest.json`, `SHA256.txt`
-(hashes of the uploaded files) and `platform_receipt.json`. Graded on whestbench 0.16.x with FlopScope 0.12.3, 100 public
+(hashes of the shipped files), `platform_receipt.json` (the upload receipt, with the archive hash) and `graded/` (the
+official grading audit). Graded on whestbench 0.16.x with FlopScope 0.12.3, 100 public
 networks each, score = raw final-layer MSE x max(0.1, FLOPs / 2^41).
 
 ## MAIN submissions: the two selected for the final score

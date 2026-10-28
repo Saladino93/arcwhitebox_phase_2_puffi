@@ -1,0 +1,228 @@
+{
+  "submission_id": 337563,
+  "status": "GRADED",
+  "terminal": true,
+  "progress": {
+    "total_mlps": 100,
+    "mlps_completed": 100,
+    "mlps_in_flight": 0,
+    "mlps_failed": 0,
+    "pct_complete": 100.0
+  },
+  "phase": "scoring",
+  "official_grade_pass": true,
+  "observable_checks_pass": true,
+  "scope": "Official status and eligibility audit only; no fitting, method selection or hidden-target reconstruction.",
+  "setup_audit": {
+    "authoritative_source": "results.setup_executions",
+    "execution_count": 7,
+    "nonnull_per_mlp_count": 7,
+    "null_per_mlp_count": 93,
+    "null_semantics": "Absent per-network setup observation, never zero or an automatic cap failure; complete successful worker setup execution records remain mandatory.",
+    "smoke_worker_passes": 7,
+    "cap_s": 5.0
+  },
+  "checks": [
+    {
+      "name": "graded_completed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "evaluation_id",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "100_of_100_no_failures",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "smoke",
+      "passed": true,
+      "detail": {
+        "passed": true,
+        "duration_ms": 33700.25672800057,
+        "worker_passes": 7,
+        "worker_failures": 0,
+        "error_code": null
+      }
+    },
+    {
+      "name": "no_evaluation_error",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "phase2_config",
+      "passed": true,
+      "detail": {
+        "n_mlps": 100,
+        "depth": 16,
+        "width": 1024,
+        "flop_budget": 2199023255552.0
+      }
+    },
+    {
+      "name": "flopscope_version",
+      "passed": true,
+      "detail": "0.12.3"
+    },
+    {
+      "name": "flopscope_client_version",
+      "passed": true,
+      "detail": "0.12.3"
+    },
+    {
+      "name": "flopscope_server_version",
+      "passed": true,
+      "detail": "0.12.3"
+    },
+    {
+      "name": "complete_telemetry_indices",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "untruncated",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "flops_used_cap",
+      "passed": true,
+      "detail": {
+        "max": 359553644346.0,
+        "cap": 2199023255552
+      }
+    },
+    {
+      "name": "participant_predict_wall_s_cap",
+      "passed": true,
+      "detail": {
+        "max": 101.87832217699997,
+        "cap": 120.0
+      }
+    },
+    {
+      "name": "residual_wall_time_s_cap",
+      "passed": true,
+      "detail": {
+        "max": 0.37191024499999514,
+        "cap": 0.4
+      }
+    },
+    {
+      "name": "budget_exhausted_all_false",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "time_exhausted_all_false",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "residual_wall_time_exhausted_all_false",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "combined_budget_exhausted_all_false",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "rows_completed_without_error",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "setup_executions",
+      "passed": true,
+      "detail": {
+        "count": 7,
+        "cap": 5.0
+      }
+    },
+    {
+      "name": "setup_worker_coverage",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reported_setup_consistent",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "authoritative_score_finite",
+      "passed": true,
+      "detail": 1.8782730188738513e-09
+    },
+    {
+      "name": "authoritative_final_mse_finite",
+      "passed": true,
+      "detail": 1.21063184543857e-08
+    }
+  ],
+  "authoritative_adjusted_score": 1.8782730188738513e-09,
+  "authoritative_raw_final_layer_mse": 1.21063184543857e-08,
+  "runtime_environment": {
+    "whestbench_version": "0.16.1",
+    "flopscope_version": "0.12.3",
+    "flopscope_server_version": "0.12.3",
+    "numpy_version": "2.2.6",
+    "python_version": "3.10.21",
+    "flopscope_patches": [],
+    "flopscope_client_version": "0.12.3",
+    "participant_shim_version": "0.1.0",
+    "participant_python_version": "3.10.21"
+  },
+  "limits": {
+    "flops_used": 2199023255552,
+    "participant_predict_wall_s": 120.0,
+    "residual_wall_time_s": 0.4
+  },
+  "maxima": {
+    "flops_used": 359553644346.0,
+    "participant_predict_wall_s": 101.87832217699997,
+    "residual_wall_time_s": 0.37191024499999514,
+    "setup_execution_wall_s": 2.815214226000535
+  },
+  "memory_audit": {
+    "direct_measurement": "not_reported_in_inspected_official_schema",
+    "official_limit": "8 GB (SDK ContestSpec 8192 MiB)",
+    "interpretation": "Successful official grade reflects enforced grader limits; no independent official RSS measurement is asserted."
+  },
+  "score_scope": {
+    "source": "Authoritative full-precision top-level submission.score",
+    "rounded_public_score_rows": 50,
+    "exact_100_score_reconstruction": "Not attempted: public score rows are rounded and can cover only50 networks."
+  },
+  "official_aggregates": {
+    "public": {
+      "score": 1.878e-09,
+      "score_secondary": 1.211e-08,
+      "sampling_mse": 1.132e-06,
+      "adjusted_final_layer_score": 1.878e-09,
+      "final_layer_mse": 1.211e-08,
+      "all_layers_mse": 4.737e-09,
+      "best_mlp_adjusted_final_layer_score": 1.36e-09,
+      "worst_mlp_adjusted_final_layer_score": 2.458e-09,
+      "mean_score_multiplier": 0.15503712584940332,
+      "mean_compute_utilization": 0.15503712584940332,
+      "mean_effective_compute": 340930245216.78,
+      "n_failed_mlps": 0,
+      "failure_breakdown": {
+        "budget_exhausted": 0,
+        "time_exhausted": 0,
+        "residual_wall_time_exhausted": 0,
+        "combined_budget_exhausted": 0,
+        "error": 0
+      }
+    }
+  },
+  "server_archive_hash_binding": "Not reported by this API; root release plus upload-ID receipt bind the locally authorized upload action."
+}

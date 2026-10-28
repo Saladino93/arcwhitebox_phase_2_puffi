@@ -1,0 +1,174 @@
+{
+  "submission_id": 337631,
+  "status": "GRADED",
+  "score": 1.8607855056042708e-09,
+  "score_secondary": 1.2105699784825674e-08,
+  "grading_message": "<p>Graded successfully</p>\n",
+  "terminal": true,
+  "phase": "scoring",
+  "completed_at": "2026-10-21T22:36:58Z",
+  "public_aggregates": {
+    "score": 1.861e-09,
+    "score_secondary": 1.211e-08,
+    "sampling_mse": 1.132e-06,
+    "adjusted_final_layer_score": 1.861e-09,
+    "final_layer_mse": 1.211e-08,
+    "all_layers_mse": 4.737e-09,
+    "best_mlp_adjusted_final_layer_score": 1.345e-09,
+    "worst_mlp_adjusted_final_layer_score": 2.433e-09,
+    "mean_score_multiplier": 0.15360135757949137,
+    "mean_compute_utilization": 0.15360135757949137,
+    "mean_effective_compute": 337772957401.66,
+    "n_failed_mlps": 0,
+    "failure_breakdown": {
+      "budget_exhausted": 0,
+      "time_exhausted": 0,
+      "residual_wall_time_exhausted": 0,
+      "combined_budget_exhausted": 0,
+      "error": 0
+    }
+  },
+  "public_mean_flops_percent": 15.360135757949136,
+  "all_100_max_flops_percent": 16.20048215454517,
+  "all_100_min_flops_percent": 14.563935767682779,
+  "max_prediction_wall_s": 96.82266680999965,
+  "median_prediction_wall_s": 89.88636121800118,
+  "max_residual_wall_s": 0.375446960000005,
+  "median_residual_wall_s": 0.3471539875000005,
+  "max_setup_wall_s": 2.768514840001444,
+  "setup_executions": [
+    {
+      "worker_id": "w-4",
+      "generation": 0,
+      "flops": 3329756640,
+      "wall_s": 2.6787068220000947,
+      "kernel_ns": 285079336,
+      "comms_ns": 240791736,
+      "error_code": "SUCCESS"
+    },
+    {
+      "worker_id": "w-3",
+      "generation": 0,
+      "flops": 3329756640,
+      "wall_s": 2.746767982999927,
+      "kernel_ns": 293973596,
+      "comms_ns": 249273791,
+      "error_code": "SUCCESS"
+    },
+    {
+      "worker_id": "w-0",
+      "generation": 0,
+      "flops": 3329756640,
+      "wall_s": 2.7479711529995257,
+      "kernel_ns": 303834372,
+      "comms_ns": 247900717,
+      "error_code": "SUCCESS"
+    },
+    {
+      "worker_id": "w-1",
+      "generation": 0,
+      "flops": 3329756640,
+      "wall_s": 2.768514840001444,
+      "kernel_ns": 300640762,
+      "comms_ns": 253003839,
+      "error_code": "SUCCESS"
+    },
+    {
+      "worker_id": "w-2",
+      "generation": 0,
+      "flops": 3329756640,
+      "wall_s": 2.7453593900027045,
+      "kernel_ns": 296247266,
+      "comms_ns": 245871905,
+      "error_code": "SUCCESS"
+    },
+    {
+      "worker_id": "w-3",
+      "generation": 0,
+      "flops": 3329756640,
+      "wall_s": 2.665530309000019,
+      "kernel_ns": 284828837,
+      "comms_ns": 245892245,
+      "error_code": "SUCCESS"
+    }
+  ],
+  "runtime_environment": {
+    "whestbench_version": "0.16.1",
+    "flopscope_version": "0.12.3",
+    "flopscope_server_version": "0.12.3",
+    "numpy_version": "2.2.6",
+    "python_version": "3.10.21",
+    "flopscope_patches": [],
+    "flopscope_client_version": "0.12.3",
+    "participant_shim_version": "0.1.0",
+    "participant_python_version": "3.10.21"
+  },
+  "smoke_test_result": {
+    "passed": true,
+    "duration_ms": 33563.38499099729,
+    "worker_passes": 6,
+    "worker_failures": 0,
+    "error_code": null
+  },
+  "checks": [
+    {
+      "name": "graded",
+      "passed": true,
+      "detail": "GRADED"
+    },
+    {
+      "name": "100_of_100_completed",
+      "passed": true,
+      "detail": {
+        "total_mlps": 100,
+        "mlps_completed": 100,
+        "mlps_in_flight": 0,
+        "mlps_failed": 0,
+        "pct_complete": 100.0
+      }
+    },
+    {
+      "name": "no_per_network_errors",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "no_exhaustion_flags",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "smoke_passed_all_workers",
+      "passed": true,
+      "detail": {
+        "passed": true,
+        "duration_ms": 33563.38499099729,
+        "worker_passes": 6,
+        "worker_failures": 0,
+        "error_code": null
+      }
+    },
+    {
+      "name": "max_prediction_wall_under_120s",
+      "passed": true,
+      "detail": 96.82266680999965
+    },
+    {
+      "name": "max_residual_under_0p4s",
+      "passed": true,
+      "detail": 0.375446960000005
+    },
+    {
+      "name": "max_setup_under_5s",
+      "passed": true,
+      "detail": 2.768514840001444
+    },
+    {
+      "name": "max_flops_under_budget",
+      "passed": true,
+      "detail": 0.1620048215454517
+    }
+  ],
+  "observable_checks_pass": true,
+  "scope": "Official status and eligibility audit only; no fitting, method selection or hidden-target reconstruction."
+}

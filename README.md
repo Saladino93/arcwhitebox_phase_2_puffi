@@ -40,9 +40,9 @@ only in `bank.py` (the shared elder-basis rank cap) and `fmm.py` (the final Stra
 | **[`337577`](submissions/337577)** | **337577** | **1.8671e-9** | **1.1741e-8** | **15.89 %** | **pointwise Strassen 7-to-4 combine (10 lines); SELECTED (most accurate)** |
 | **[`337631`](submissions/337631)** | **337631** | **1.8608e-9** | **1.2106e-8** | **15.36 %** | **both edits; SELECTED (best official score)** |
 
-All four completed 100/100 networks with no failures, max wall 96.8-98.0 s, max residual 0.37 s. Each folder has its own
-README with the full audit, `manifest.json`, `SHA256.txt` and the platform receipt. Graded on whestbench 0.16.x with
-FlopScope 0.12.3.
+All four completed 100/100 networks with no failures, max prediction wall 96.8-101.9 s, max residual 0.372-0.380 s. Each
+folder has its own README with the full audit, `manifest.json`, `SHA256.txt` (hashes of the shipped files), the upload
+receipt and the official grading audit in `graded/`. Graded on whestbench 0.16.x with FlopScope 0.12.3.
 
 Each submission is four files: `estimator.py` (the moment engine), `bank.py` (the third-cumulant source bank and its
 fourth-cumulant reads), `pk4.py` (tree-level fourth cumulants) and `fmm.py` (an alternative-basis Strassen-Winograd
