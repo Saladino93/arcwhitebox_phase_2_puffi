@@ -97,10 +97,9 @@ entries is ever formed; every product over sources is a per-source loop. Measure
 - TC hub rows dv > 0.04 (submission 337479's COL) vs 0.01: x1.0025 (noise), 0.04 kept;
 - dense residual leg R (exact repair): not built, multiplier 1.05 with the three-leg form.
 
-## Tools
+## Running
 
-`tools/run_net.py <root> <net.npz> [--debug out.npz]` runs one estimator root on one exported net in an isolated process and
-prints raw MSE, per-layer MSE, wall, peak RSS, GF and multiplier (with `--debug` it records per-layer states of the clean
-program by wrapping `Engine.advance`); `tools/export_nets.py <dir> <nets...>` exports nets from the dataset;
-`tools/dump_plain_states.py` records the same states from the plain submission 337631 estimator; `tools/compare_states.py` prints the
-relative distances per layer.
+`Estimator().predict(mlp, budget)` returns the (16, 1024) predicted means; `mlp.weights` is the list of 16 float32 (1024, 1024)
+matrices applied as `h = relu(h @ W)` to `x ~ N(0, I)`. Only numpy is needed. The run prints the FLOP tally (GF and
+multiplier). The development tools that exported networks and compared per-layer states against the graded code live in
+the team's research repository and are not part of this release.
