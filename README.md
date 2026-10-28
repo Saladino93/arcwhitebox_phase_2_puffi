@@ -94,10 +94,10 @@ Validated to 1e-14 against a dense width-64 oracle (`docs/k3_dense_oracle_width6
 
 ### Tutorial notebook
 
-[`distilled_submission/tutorial.ipynb`](distilled_submission/tutorial.ipynb) downloads one public network with its Monte Carlo
-targets, runs the two Gaussian baselines (K=1, K=2), the K=3 reference and the distilled estimator, and plots the mean squared
-error of every layer for each method. It needs only numpy, pyarrow, huggingface_hub, matplotlib, scienceplots and pandas, and
-about a minute after the one-time 1 GB download.
+[`distilled_submission/tutorial.ipynb`](distilled_submission/tutorial.ipynb) regenerates one public network bit for bit from its dataset seed, loads its Monte Carlo
+targets (64 KB, shipped with the notebook), runs the two Gaussian baselines (K=1, K=2), the K=3 reference and the distilled estimator, and plots the mean squared
+error of every layer for each method. It needs only numpy, matplotlib, scienceplots and pandas, downloads nothing, and runs in
+about a minute.
 
 ![per-layer MSE of four estimators on network 600](distilled_submission/tutorial_mse_per_layer.png)
 

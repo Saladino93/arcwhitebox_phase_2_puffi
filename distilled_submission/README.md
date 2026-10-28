@@ -99,7 +99,7 @@ entries is ever formed; every product over sources is a per-source loop. Measure
 
 ## Running
 
-`tutorial.ipynb` is a runnable example: one public network, four estimators (K=1, K=2, the K=3 reference and this program),
+`tutorial.ipynb` is a runnable example: one public network regenerated from its seed (targets in `tutorial_network_600.npz`), four estimators (K=1, K=2, the K=3 reference and this program),
 the per-layer MSE plot `tutorial_mse_per_layer.png` and a table of final-layer MSE, FLOPs and wall time.
 
 `Estimator().predict(mlp, budget)` returns the (16, 1024) predicted means; `mlp.weights` is the list of 16 float32 (1024, 1024)
