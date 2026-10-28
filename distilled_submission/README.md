@@ -99,6 +99,9 @@ entries is ever formed; every product over sources is a per-source loop. Measure
 
 ## Running
 
+`tutorial.ipynb` is a runnable example: one public network, four estimators (K=1, K=2, the K=3 reference and this program),
+the per-layer MSE plot `tutorial_mse_per_layer.png` and a table of final-layer MSE, FLOPs and wall time.
+
 `Estimator().predict(mlp, budget)` returns the (16, 1024) predicted means; `mlp.weights` is the list of 16 float32 (1024, 1024)
 matrices applied as `h = relu(h @ W)` to `x ~ N(0, I)`. Only numpy is needed. The run prints the FLOP tally (GF and
 multiplier). The development tools that exported networks and compared per-layer states against the graded code live in

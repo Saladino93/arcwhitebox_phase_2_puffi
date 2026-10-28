@@ -92,6 +92,15 @@ covariance, third cumulant as symmetric CP factors (rank grows by 2n per layer) 
 Validated to 1e-14 against a dense width-64 oracle (`docs/k3_dense_oracle_width64.py`). Multiplier 0.925, pooled raw MSE
 3.55e-8 on the same 20 networks, so the distilled submission 337479 is about 2.9x more accurate at a lower FLOP count.
 
+### Tutorial notebook
+
+[`distilled_submission/tutorial.ipynb`](distilled_submission/tutorial.ipynb) downloads one public network with its Monte Carlo
+targets, runs the two Gaussian baselines (K=1, K=2), the K=3 reference and the distilled estimator, and plots the mean squared
+error of every layer for each method. It needs only numpy, pyarrow, huggingface_hub, matplotlib, scienceplots and pandas, and
+about a minute after the one-time 1 GB download.
+
+![per-layer MSE of four estimators on network 600](distilled_submission/tutorial_mse_per_layer.png)
+
 ### Reading order
 
 1. [`distilled_submission/README.md`](distilled_submission/README.md): the model in plain words, the three ideas that
