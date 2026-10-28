@@ -1,0 +1,12 @@
+{
+  "submission_id": 337577,
+  "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/337577",
+  "archive_sha256": "9a01aa8d03f3382ff0cc0e351af7b3054e68af772922c2b39eec0522bfb92aad",
+  "release_sha256": "439321453029216468e1b8baa0c242649784f65dafd7e693d12f3a5724b30e78",
+  "upload_stdout_sha256": "99b52529620fff7b64e41a877f2b06ab07e4f2984f9ea38a8929c76a7b8dd71e",
+  "finished_utc": "2026-10-21T17:26:50.703501+00:00",
+  "one_creation_attempt": true,
+  "monitoring_started": false,
+  "official_result": "unknown",
+  "qualification_scope": "Exact artifact source/API/smoke/cold passed; continuous two passed, third incomplete after root metadata SSH guard detection; no full lifecycle pass asserted"
+}

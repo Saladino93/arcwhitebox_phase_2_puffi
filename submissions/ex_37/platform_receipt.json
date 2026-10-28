@@ -1,0 +1,13 @@
+{
+  "submission_id": 337631,
+  "url": "https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/337631",
+  "archive_sha256": "9afc64478602acd060ab058a68dea6942db587e5fe31bee2e3c112a4275fbc85",
+  "user_authorization_sha256": "4d626499ada25a27d8343caef5d59c8845fbda10c261cdb7ef8f5b21aee8eca1",
+  "upload_stdout_sha256": "4b96ad45881f7cfc8bb1ce1064c5ffb92d7a1e2d758adcd43f61f1b8d0f2a9d4",
+  "uploaded_utc": "2026-10-21T21:44:35.563514+00:00",
+  "one_creation_attempt": true,
+  "monitoring_started": false,
+  "official_result": "unknown",
+  "qualification_scope": "Exact artifact: whestbench 0.16.2 API validation and 8 smoke cases passed; one Linux official-client cold run on public 500 passed all caps (residual proxy 0.381544 s). Continuous lifecycle and independent fresh confirmation not performed (final-hours scope, user-approved).",
+  "official_result_recorded_later": "GRADED 1.8607855056e-9 (see graded/official_audit.json)"
+}
