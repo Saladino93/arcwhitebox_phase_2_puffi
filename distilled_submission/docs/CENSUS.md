@@ -80,7 +80,7 @@ Peak RSS = state + temporaries. Temporaries per step: a batched product output (
 per source: 4-8 MiB), einsum temporaries of the pair law (a few n x n), the birth's extra/H/r (3-4 n x n). Budget
 0.3 GiB float32 / 0.6 GiB float64 with per-source chunking. Expected peak: D3b float32 1.4 GiB; D3b float64 2.9 GiB.
 
-dtype recommendation. The plain code is float32 throughout and reproduces ex_34, so float32 legs reproduce the
+dtype recommendation. The plain code is float32 throughout and reproduces submission 337479, so float32 legs reproduce the
 statistic. Keep LEG2, COMB2, RECON, PP in float32 (1.1 GiB state for D3b; a float64 history at 2.3 GiB leaves
 < 1.7 GiB for everything else under the 4 GiB peak rule and doubles BLAS time). Use float64 for: all (n,) per-neuron
 algebra (vertices, Edgeworth rows, families, core weights, radial solve, completion coefficients), the engine's n x n

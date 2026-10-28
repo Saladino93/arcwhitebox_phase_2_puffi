@@ -1,4 +1,4 @@
-# Shared-basis Argon recurrence on the qualified 337428 backend (ex_34)
+# Shared-basis Argon recurrence on the qualified 337428 backend (submission 337479)
 
 This is the exact artifact uploaded as [submission 337479](https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/337479)
 on 2026-10-21. **Graded successfully: official score 1.8840699578e-9**, final-layer MSE 1.1741755888e-8 at 16.0351 % mean
@@ -6,20 +6,20 @@ public FLOP budget use. All 100 networks completed with zero failures. It is the
 
 - **4.99 % lower** than the previous team best, submission 337428 (1.9829771968e-9). 337428 came from the arc4 experiment
   `e6_history_lite_final_combine`, which is not archived as an example here.
-- **6.24 % lower** than [ex_33](../ex_33) (336552, 2.0093582727e-9).
+- **6.24 % lower** than [submission 336552](https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/336552) (336552, 2.0093582727e-9).
 
 The leaderboard leader when grading finished, submission 337381 (1.3453767043e-9), remains 40 % lower.
 
-The statistical source is candidate F0 from the separate ex_34 campaign on branch `claude/gifted-einstein-44qo48`
-(`research/ex_34/candidate_F0`, commit `00e5e306`), which was never submitted. That branch is not merged into main. This
+The statistical source is candidate F0 from the separate submission 337479 campaign on branch `claude/gifted-einstein-44qo48`
+(`research/submission 337479/candidate_F0`, commit `00e5e306`), which was never submitted. That branch is not merged into main. This
 directory is the graded descendant of F0.
 
 ## What it is
 
-ex_34 combines two exact parents and adds no fitted parameters, ranks, thresholds or catalogue changes:
+submission 337479 combines two exact parents and adds no fitted parameters, ranks, thresholds or catalogue changes:
 
 - **Statistics** (`bank.py`, `pk4.py` and the `estimator.py` numerics): F0 plus three safety changes. F0 is the Argon
-  chassis of [ex_30](../ex_30) plus two lanes from the F0 campaign.
+  chassis of [submission 336299](https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/336299) plus two lanes from the F0 campaign.
 - **Matrix backend** (`fmm.py`): byte-identical to the officially graded 337428 package.
 
 ### Statistical changes relative to 337428
@@ -51,7 +51,7 @@ These were registered and made before any score measurement:
 
 ### Backend and lifecycle
 
-The backend comes from the officially qualified ex_30 static-setup lineage behind 337428:
+The backend comes from the officially qualified submission 336299 static-setup lineage behind 337428:
 
 - Shape-only Strassen views and arenas are built once, in `Estimator.setup`, by `fmm.prepare_static_views(width)`.
 - `fmm.configure()` invalidates data-dependent plans and operand transforms at each prediction.
@@ -68,7 +68,7 @@ Running the same statistics on F0's own backend (arc4 `e6_shared_basis_replaceme
 - The quiet cold public-500 residual was 0.4457 s, which fails the 0.4 s cap.
 - That run made 19,022 more client requests during prediction, and 15,861 fewer during setup, than 337428.
 
-ex_34 keeps every statistical term and swaps only the backend and lifecycle; its cold residual is 0.3814 s. Products are
+submission 337479 keeps every statistical term and swaps only the backend and lifecycle; its cold residual is 0.3814 s. Products are
 unchanged in exact arithmetic, but FMM routing, rounding and billed FLOPs differ from F0's.
 
 All prediction-time numerical work uses public FlopScope 0.12.3 operations, one value per scalar, without packing.
@@ -77,7 +77,7 @@ All prediction-time numerical work uses public FlopScope 0.12.3 operations, one 
 
 Graded 2026-10-21 06:07–06:39 UTC.
 
-| Official measurement | 337479 (ex_34) | 337428 |
+| Official measurement | 337479 (submission 337479) | 337428 |
 | --- | ---: | ---: |
 | Public-50 mean per-network adjusted score | **1.8840699578e-9** | 1.9829771968e-9 |
 | Public-50 mean final-layer MSE | 1.1741755888e-8 | 1.1554468262e-8 |
@@ -104,7 +104,7 @@ Records:
 ## How it was chosen
 
 Scores are the mean of each network's `final_layer_MSE * max(0.1, F / 2^41)`, using actual public FlopScope 0.12.3 metering.
-No training, sweep or tuning was done. Each run below compares ex_34 against the exact 337428 package.
+No training, sweep or tuning was done. Each run below compares submission 337479 against the exact 337428 package.
 
 - **Development panel, public 560–567.** These networks had been used before, so this is exposed development evidence. Mean
   adjusted score was 1.8648954074e-9 against 1.9181084393e-9 (−2.77 %), with final MSE 1.1514e-8 at 16.21 % actual FLOPs.

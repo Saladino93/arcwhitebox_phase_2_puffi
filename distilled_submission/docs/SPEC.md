@@ -1,4 +1,4 @@
-# SPEC: the mathematics of ex_34 as the clean dense program should compute it
+# SPEC: the mathematics of submission 337479 as the clean dense program should compute it
 
 Author: Fable B (mathematician). Status: complete (sections 0-8); corrected 2026-10-28 after Fable A's review (2.1, 2.4, 1.6(ii), 1.7, 1.4, 3.3, 6).
 Source of truth: `source/estimator_plain/` (abbreviations as in SOURCE_MAP: M = moments.py, MF = moment_formulas.py,
@@ -272,11 +272,11 @@ Economy items dropped in the clean version (all SOURCE_MAP 2a/2b): hub admission
 drop tolerance 1e-3, P-only saturated hubs), COL/S/OUT/row plans and the rank-two fill, 64-padding, shared elder
 basis and switch ages, block-Krylov SVD. Saturated hubs (gate >= 1 - 0.003) [corrected 2026-10-28]: in the
 completed-square form their H row is F = X/(2 sqrt e), HUGE (e tiny), and its square is removed only at rank one, so
-ex_34's P-only rule is a numerical necessity of that form, not an economy; the PK4 dressed leg g' = u + (X - coef P)/(2e)
+submission 337479's P-only rule is a numerical necessity of that form, not an economy; the PK4 dressed leg g' = u + (X - coef P)/(2e)
 diverges likewise, so PK4's live mask must exclude them (K:257 does). In the three-leg form the X row is finite
 (e Sym(P,u,u) -> 0, (1/2) Sym6(P,u,X) stays) and could be kept in the bank while PK4 still excludes the hub; that is a
-measurable variant, not the faithful reading. The clean program keeps ex_34's two hub rules (gate > 0.01; P-only when
-saturated) as statistics. Convention difference recorded in REVIEW.md (a): ex_34 subtracts the saturated hub's full H
+measurable variant, not the faithful reading. The clean program keeps submission 337479's two hub rules (gate > 0.01; P-only when
+saturated) as statistics. Convention difference recorded in REVIEW.md (a): submission 337479 subtracts the saturated hub's full H
 image from r and beta and then drops the H row; the clean program drops both consistently.
 
 ## 2. The trace correction TC (B:1452-1737, 1739-1900, 1902-2035)
@@ -332,7 +332,7 @@ In the plain code Bo is replaced by its rank n/256 = 4 truncated SVD U S V^T and
 statistics truncation ("lower ranks scored better (adjusted)"). The exact dense reading is (2.2) with the full Bo
 (two (n x n) @ (n x n) products per TC layer: Bo^T (Y o Y) and Bo Y) and dd = z3_s. The plain code's reassociation
 `_repeated_query_residual` (R such that sum Z o R = the contraction) is exact.
-TRUNCATION (TC repeated-index rank 4): keep rank 4 to reproduce ex_34; the dense (2.2) is the exact form of the same
+TRUNCATION (TC repeated-index rank 4): keep rank 4 to reproduce submission 337479; the dense (2.2) is the exact form of the same
 statistic. Recommend: implement (2.2) exactly, measure alone.
 
 ### 2.3 The scalar correction and the newest TC
@@ -695,7 +695,7 @@ Unexplained choices (SOURCE_MAP 2c list) and their dense reading:
   the a2 gv d term is the diagonal-gram specialisation) AND gm itself (M:612-613: the s I part of A pushes to s W^T W,
   off-diagonal when gram is dense). Fable A's dense-gram test wired the first four and measured x1.343, so it measured
   a hybrid; the recorded x1.002 (M:577) refers to a wiring not recoverable from the plain source. The diagonal gram is
-  ex_34's statistic and is what ships.
+  submission 337479's statistic and is what ships.
 - e = 0 guard in the birth (M:325-328) and PK4 live mask (K:257, 266): with 1.6(ii)(B) the guard disappears; the PK4
   coefficients of a hub with e = 0 remain zero (3.3).
 

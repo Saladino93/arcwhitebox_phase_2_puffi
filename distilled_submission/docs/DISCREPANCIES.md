@@ -7,7 +7,7 @@
    fold only on the u leg (ch = 3 e W o Qt), nothing on X. Measured on net 99: M = e u + X/2 gives raw 2.58e-8 (x2.3, blow-up
    from layer 12), M = e u gives 1.118e-8 (within 0.4 % of the H-form program that reproduces the plain code). The program
    uses M = e u. SPEC.md section 2.1 and the `ch_X` sentence of 2.4 should be corrected.
-2. **SPEC D1 / 1.6(ii), source 0's F (x) F term.** Keeping it (ex_34's exception) vs removing it exactly: raw 1.11799e-8 vs
+2. **SPEC D1 / 1.6(ii), source 0's F (x) F term.** Keeping it (submission 337479's exception) vs removing it exactly: raw 1.11799e-8 vs
    1.11824e-8 on net 99 (x0.9998, noise). The program removes it (the model's reading); the measurement is recorded.
 3. **SOURCE_MAP 2b "diagonal metric gram = diag(gv) after layer 0: x1.002 raw MSE for -5.5 GF".** On this dense program the
    dense gram W^T W (entering Q22/4, Q31/6, gra and the grc half-trace term exactly as layer 0 does) measured x1.343 on
@@ -30,15 +30,15 @@
 8. **SPEC 1.7 / SOURCE_MAP 2b: hub admission and saturation are economy.** They are also the closure's numerical guard: with
    every neuron a hub, saturated hubs (dv = 1.0, Edgeworth-corrected e ~ 1e-9) give PK4 dressed legs |g'| ~ 2e2 and the
    terminal q4 diverges (net 33: raw 1.7e-3; net 32 with the exact repeated index: NaN). SPEC 1.7's dense reading "keep the H
-   row (its e is tiny, so H ~ F)" is numerically wrong: F = X/(2 sqrt e) is huge, not small. The program keeps ex_34's two rules
+   row (its e is tiny, so H ~ F)" is numerically wrong: F = X/(2 sqrt e) is huge, not small. The program keeps submission 337479's two rules
    (gate > 0.01 to be a hub; gate >= 1 - 0.003 -> P only, no square, no PK4) as statistics; the HUB_DROP_TOLERANCE crop and
    the COL/S/OUT/row plans stay removed. With the rules the five dev nets are within -6 %..+4 % of the cap-320 plain run
    (pooled x0.994).
-9. **REVIEW S1: saturated hubs' repair and beta.** ex_34 forms r and beta (M:355-369) from the FULL completed-square row of a
+9. **REVIEW S1: saturated hubs' repair and beta.** submission 337479 forms r and beta (M:355-369) from the FULL completed-square row of a
    saturated hub (gate >= 0.997, the H row includes the huge F part), then zeroes that H row (B:2643-2645) and masks the
    packet, so r and beta subtract an image that is no longer represented; my first version subtracted only the represented
-   (u, X dropped) image, which is self-consistent. Measured on net 99 (three-leg program, hub rules on): ex_34's hybrid
+   (u, X dropped) image, which is self-consistent. Measured on net 99 (three-leg program, hub rules on): submission 337479's hybrid
    1.08706e-8 vs self-consistent 1.09794e-8 (x0.990). The hybrid is faithful and not worse, so the program now uses it
    (birth: `own`, beta from the full rows, then u, X rows of saturated hubs dropped). Also measured there: TC hub rows
-   dv > 0.04 (ex_34's COL plan) vs dv > 0.01: 1.10067e-8 vs 1.09794e-8 (x1.0025, noise); the faithful 0.04 is used. With
+   dv > 0.04 (submission 337479's COL plan) vs dv > 0.01: 1.10067e-8 vs 1.09794e-8 (x1.0025, noise); the faithful 0.04 is used. With
    both changes net 99 is 1.08933e-8.

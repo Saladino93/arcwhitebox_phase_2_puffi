@@ -1,23 +1,23 @@
-# Shared elder basis rank 256 (ex_35)
+# Shared elder basis rank 256 (submission 337563)
 
 Exact code uploaded as [submission 337563](https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/337563) on 2026-10-21.
 The saved official response reports **GRADED**, adjusted score **1.8782730189e-9**, final-layer MSE **1.2106318454e-8**,
 and 15.5037% mean public FLOP budget use. All 100 networks completed with zero failures.
-This is approximately 0.308% below ex_34's official score.
+This is approximately 0.308% below submission 337479's official score.
 
 ## Code and mechanism
 
-This is [ex_34](../ex_34) with one line changed in `bank.py`: the shared elder-basis SVD cap is `n // 4`
+This is [submission 337479](../337479) with one line changed in `bank.py`: the shared elder-basis SVD cap is `n // 4`
 instead of `5 * n // 16` (256 instead of 320 at width 1024). The smaller shared basis reduces transport and
 contraction work while omitting additional singular directions. `estimator.py`, `pk4.py`, `fmm.py` and `LICENSE`
-are byte-identical to ex_34. The dense final FMM combine and setup-prepared views remain intact.
+are byte-identical to submission 337479. The dense final FMM combine and setup-prepared views remain intact.
 All prediction arithmetic uses public FlopScope operations, with one value per scalar.
 
 ## Evidence and limits
 
 On exposed development networks public 560–567, mean per-network adjusted score was 1.8422624077e-9,
 final-layer MSE 1.1770649937e-8, and actual public FLOPs 15.6653% of budget (FlopScope 0.12.3).
-The matched ex_34 score was 1.8648954074e-9, a 1.214% development gain.
+The matched submission 337479 score was 1.8648954074e-9, a 1.214% development gain.
 
 The independent 24-network confirmation **failed its registered superiority gate**: estimated adjusted score
 2.0542979085e-9 versus 2.0547264984e-9, only 0.0209% lower, with the one-sided 95% upper difference positive.

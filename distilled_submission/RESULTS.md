@@ -1,13 +1,13 @@
-# RESULTS: clean dense numpy rewrite of ex_34 (Fable A)
+# RESULTS: clean dense numpy rewrite of submission 337479 (Fable A)
 
 Date 2026-10-27. Machine: Apple M4 Pro, numpy 2.2.6 (Accelerate), Python 3.10; host busy (load 7-9), wall times are single
 observations. Harness: `scripts/numpy_harness.py` shims; isolated runs through `clean/tools/run_net.py` (same code path as
 `isolated_rss.py`, net exported to npz so the process RSS is the estimator's). Reference numbers on net 99: plain cap-320
-(= ex_34 statistics) 1.1051331e-8; ex_34 graded 1.1064921e-8.
+(= submission 337479 statistics) 1.1051331e-8; submission 337479 graded 1.1064921e-8.
 
 Program: `clean/estimator.py`, **807 lines** (one file, numpy only, every product through `mm`; README.md holds the explanation).
 Final form D3b: three dense legs per source (u = C dv, X = extra, P), rank-2 repair + conservation column kept, rank-4
-repeated-index image in the TC kept (exact SVD), ex_34's hub rules kept as statistics (gate > 0.01 to be a hub, gate < 0.997
+repeated-index image in the TC kept (exact SVD), submission 337479's hub rules kept as statistics (gate > 0.01 to be a hub, gate < 0.997
 to carry a square, TC hub rows gate > 0.04, r/beta of saturated hubs from the full rows), all other crops / plans / padding /
 elder basis / block-Krylov SVD removed; dtype: legs and coefficient rows float32, vectors and the cross-source accumulators
 (slice, z3, rt, dq, PK4) float64.
@@ -34,7 +34,7 @@ Two scratch copies of `source/estimator_plain` were run with `clean/tools/dump_p
 `clean/tools/compare_states.py` (relative L2 per layer of premean, z3, extra = TC + PK4, q4, rt, radial v, ga, T, s, b, Cov(h),
 m, dv, ov, k3, k4, and the TC intermediates qt, A B, stash B, a1, dq, cpf, ch):
 
-- cap 320 (ex_34 statistics): 1.1051e-8. The crops make every state differ at 1e-3..1e-1 from layer 1 on (the core output crop
+- cap 320 (submission 337479 statistics): 1.1051e-8. The crops make every state differ at 1e-3..1e-1 from layer 1 on (the core output crop
   at gate 0.3 alone changes the off-diagonal of T_1 by 18 %), so this comparison only bounds gross errors.
 - fully uncropped (every threshold -1, no saturation, no elders, LAPACK SVD): 1.1273e-8. My H-form program (D2, diagonal
   gram) agrees with it to 1e-5..1e-6 in every state through layer 9, including the TC intermediates (dq 1e-5..1e-4); from
@@ -51,26 +51,26 @@ m, dv, ov, k3, k4, and the TC intermediates qt, A B, stash B, a1, dq, cpf, ch):
 | D2 all-dense H-form, dense gram W^T W (manager's first plan) | - | 1.5034e-8 | 1.360 vs cap-320 | 1194 | gram rejected |
 | D2 all-dense H-form, diagonal gram | cap-320 1.1051e-8 | 1.1138e-8 | 1.0079 | 1194 (0.543) | all-dense history: consistent with ABLATION #7 (x1.04) |
 | D3b three legs, exact F (x) F removal, TC leg M = e u, rank-4 repeated index | D2 1.1138e-8 | 1.1182e-8 | 1.0040 | 1677 (0.763) | accepted (<= +1 %) |
-| D3b with source 0's F (x) F kept (ex_34's exception) | D3b 1.1182e-8 | 1.1180e-8 | 0.9998 | 1678 | noise; exact removal kept |
+| D3b with source 0's F (x) F kept (submission 337479's exception) | D3b 1.1182e-8 | 1.1180e-8 | 0.9998 | 1678 | noise; exact removal kept |
 | D3b with the SPEC 2.1 reading M = e u + X/2 | D3b | 2.5825e-8 | 2.31 | 1678 | rejected; SPEC to be corrected |
-| D3b + exact repeated-index image (full off-diagonal B, two products) | D3b 1.1182e-8 | 1.1155e-8 | 0.9975 | 1818 (0.827) | **rejected**: diverges on net 32 (NaN from layer 13; nets 33/34/40 fine: 1.0427e-8, 1.1933e-8, 1.0095e-8). The rank-4 truncation (ex_34's statistic) is kept. |
+| D3b + exact repeated-index image (full off-diagonal B, two products) | D3b 1.1182e-8 | 1.1155e-8 | 0.9975 | 1818 (0.827) | **rejected**: diverges on net 32 (NaN from layer 13; nets 33/34/40 fine: 1.0427e-8, 1.1933e-8, 1.0095e-8). The rank-4 truncation (submission 337479's statistic) is kept. |
 | D3b + dense gram W^T W | D3b 1.1182e-8 | 1.5013e-8 | 1.343 | 1708 | rejected |
 | dense R leg (exact residual pair power) | - | not measured | - | +483 GF -> 1.05 | over budget with D3b; not built |
-| D3b with every neuron a hub (manager's plan) vs with ex_34's hub rules (gate > 0.01 admits, gate >= 0.997 -> P only) | see section 4 | 99: 1.1182e-8 vs 1.0979e-8; 32: 8.421e-9 vs 7.975e-9; 33: 1.68e-3 (terminal divergence) vs 1.0599e-8; 34: 1.2105e-8 vs 1.1796e-8; 40: 1.0217e-8 vs 9.984e-9 | all-hubs is 2.2-5.6 % worse where finite and diverges on net 33 | 1677 both | **hub rules adopted** (final) |
+| D3b with every neuron a hub (manager's plan) vs with submission 337479's hub rules (gate > 0.01 admits, gate >= 0.997 -> P only) | see section 4 | 99: 1.1182e-8 vs 1.0979e-8; 32: 8.421e-9 vs 7.975e-9; 33: 1.68e-3 (terminal divergence) vs 1.0599e-8; 34: 1.2105e-8 vs 1.1796e-8; 40: 1.0217e-8 vs 9.984e-9 | all-hubs is 2.2-5.6 % worse where finite and diverges on net 33 | 1677 both | **hub rules adopted** (final) |
 
-| REVIEW S1: saturated hubs' r and beta from the FULL u, X rows (ex_34's hybrid) vs from the represented rows only (self-consistent) | self-consistent 1.0979e-8 | hybrid 1.0871e-8 | 0.990 | 1677 | **hybrid adopted** (faithful, not worse) |
-| TC hub rows: dv > 0.04 (ex_34's COL plan) vs dv > 0.01 | 0.01: 1.0979e-8 | 0.04: 1.1007e-8 | 1.0025 (noise) | 1677 | **0.04 adopted** (faithful) |
+| REVIEW S1: saturated hubs' r and beta from the FULL u, X rows (submission 337479's hybrid) vs from the represented rows only (self-consistent) | self-consistent 1.0979e-8 | hybrid 1.0871e-8 | 0.990 | 1677 | **hybrid adopted** (faithful, not worse) |
+| TC hub rows: dv > 0.04 (submission 337479's COL plan) vs dv > 0.01 | 0.01: 1.0979e-8 | 0.04: 1.1007e-8 | 1.0025 (noise) | 1677 | **0.04 adopted** (faithful) |
 | both together (the final statistics) | 1.0979e-8 | 1.0893e-8 | 0.992 | 1677 | final |
 
 Why the hub rules are statistics, not economy: the PK4 dressed leg g' = (H - H_aa P)/sqrt(e) = u + (X - coef P)/(2e) of a hub
 whose Edgeworth-corrected curvature e nearly cancels (dv = 1.0, e ~ 1e-9 on net 33) reaches |g'| ~ 230 (sources 12-14 at the
-terminal) and the terminal q4 correction 10; hubs with 0.01 < dv < 0.997 stay below 0.22. ex_34 never evaluates such hubs:
+terminal) and the terminal q4 correction 10; hubs with 0.01 < dv < 0.997 stay below 0.22. submission 337479 never evaluates such hubs:
 saturated hubs keep only P (no H row, PK4 live mask 0) and dead hubs are not admitted. The "fully uncropped" plain copy used
 for validation still dropped 64 hubs of sources 13-14 on net 33 through `_hub_masks` (RESULTS section 2 / DISCREPANCIES 5),
 which is why its terminal PK4 read stayed at 1e-3. The exact repeated-index image's divergence on net 32 (row above) had the
 same origin (large stashed-slice entries from those hubs); with the hub rules it was not re-measured.
 
-Final program vs references on net 99: 1.0894e-8 / 1.1051e-8 (cap-320) = **0.9858**; / 1.1065e-8 (ex_34 graded) = 0.9846.
+Final program vs references on net 99: 1.0894e-8 / 1.1051e-8 (cap-320) = **0.9858**; / 1.1065e-8 (submission 337479 graded) = 0.9846.
 
 ### 3b. Memory churn and cuts (statistics unchanged)
 
@@ -105,7 +105,7 @@ and elementwise O(n^2) work (~15 GF) are not tallied. Peak RSS = ru_maxrss of th
 ### 4b. Final 20-net table (nets 600-619)
 
 Final 807-line file, OMP_NUM_THREADS=4, one net at a time through tools/run_net.py (isolated process). plain cap-320 =
-`source/estimator_plain` with the elder cap at 5n/16 (= ex_34's statistics); k3 reference = clean/k3_reference.py (Fable B,
+`source/estimator_plain` with the elder cap at 5n/16 (= submission 337479's statistics); k3 reference = clean/k3_reference.py (Fable B,
 factored ARC K=3, float64, mult 0.925). GF = 1677.4 (mult 0.763) on every net.
 
 | net | clean raw | plain cap-320 raw | ratio | k3 reference raw | clean wall (s) | clean peak RSS (GiB) |
@@ -134,7 +134,7 @@ factored ARC K=3, float64, mult 0.925). GF = 1677.4 (mult 0.763) on every net.
 
 Per-net ratio: min 0.941, median 1.008, max 1.091; 12 of 20 nets above 1. Pooled ratio to the k3 reference: 0.345.
 
-**Verdict.** MSE is preserved: the pooled raw of the dense program is 1.2253e-8 against 1.2153e-8 for ex_34's statistics
+**Verdict.** MSE is preserved: the pooled raw of the dense program is 1.2253e-8 against 1.2153e-8 for submission 337479's statistics
 (cap-320 plain), a pooled ratio of **1.0083**, inside the +-2 % band, and the all-dense history is confirmed to be roughly
 lossless against the elder/cropped version (ABLATION_EVIDENCE #7 recorded x1.04 on one net). The per-net spread (0.94-1.09)
 is the crop-versus-dense difference acting on individual nets, not a systematic bias. At 1677 GF (multiplier 0.763) the program
@@ -145,6 +145,6 @@ sits inside the allowed 0.5-1.0 band; it is 2.9x more accurate than the factored
 
 1. Length: 807 lines (target <= 820). The explanation lives in README.md.
 2. The float32 cancellation in the PK4 dressed leg for small-curvature hubs (DISCREPANCIES 6) remains inside the admitted
-   range 0.01 < dv < 0.997; it is ex_34's statistic, but a float64 X leg (or storing X/(2e) directly) would be the clean fix.
-3. (closed) TC hub rows: 0.04 vs 0.01 measured x1.0025 (noise); ex_34's 0.04 used.
+   range 0.01 < dv < 0.997; it is submission 337479's statistic, but a float64 X leg (or storing X/(2e) directly) would be the clean fix.
+3. (closed) TC hub rows: 0.04 vs 0.01 measured x1.0025 (noise); submission 337479's 0.04 used.
 4. Dense R leg: not built (multiplier 1.05 with D3b); recorded effect of rank 2 -> 256 elsewhere is -2.9 %.

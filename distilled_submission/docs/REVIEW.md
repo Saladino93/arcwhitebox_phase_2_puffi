@@ -3,7 +3,7 @@
 Reviewer: Fable B, 2026-10-28. Line numbers are estimator.py's (E:) unless prefixed (plain: M/MF/MM/B/K as in SPEC).
 Verdict in one line: the program is a faithful dense rewrite; I found no error that changes the statistics beyond the
 decisions A already recorded, two places where SPEC.md was wrong and the code right (now corrected in SPEC.md), one
-convention for saturated hubs where the code is self-consistent and ex_34 is not (A should know it is a change), and
+convention for saturated hubs where the code is self-consistent and submission 337479 is not (A should know it is a change), and
 one set of memory/length cleanups that remove no statistics.
 
 ## (a) Line-by-line check
@@ -19,12 +19,12 @@ Checked mechanism by mechanism (SPEC section in brackets). "same" = same statist
 | 398-434 | core update [5.3.2] | same; g_w, r_w, gmc, grc, cc, oc/or, kappa, radial parts match MF:274-315 and M:1036-1067. gram o (grc d^T) (E:423) is added at every layer, M:1065-1067 only at layer 0: past layer 0 it is diagonal (gram diagonal) and overwritten by urow (E:430). No change. p = x ga1 (E:412) as in M:1040 (SPEC D3). |
 | 425-428 | edge block [5.3.3] | same as M:983-1001, 1070-1071 without crops (hv = v). |
 | 349-369 | core push, E_GA, q4 [5.3.1] | same; layer 0 sphere values (E:357-358) match M:582-584; ga = diag(W^T T W) + s gv, E_GA added before the diagonal fill (M:793-795). |
-| 436-462 | birth [1.2, 1.6(ii)B] | three-leg form correct: `own` (E:454) is (1.18) at P = I (hub a = i: (2 e d + X_aa) u_ij + d X_ij; hub a = j: e_j u_ji^2 + u_ji X_ji); beta (E:456) = k3 - dv^3 z3 - (3 e d^2 + 3 d X_aa) is the exact-removal form of (1.11) (3 H_ii^2 - 3 F_ii^2 = 3 e d^2 + 3 d X_aa). Star birth and its charge to R, beta as M:367-371. **Convention difference, saturated hubs (adm and not sq):** the code drops their u/X rows AND leaves them out of `own` and of the 3 e d^2 + 3 d X_aa term, so the represented (2,1) slice at birth equals post on those rows (self-consistent). ex_34 computes r and beta in M:355-369 with the FULL H row (incl. the huge F part), then zeroes the H row in B:2643-2645 and masks the packet to H-carrying hubs (B:905-906), so its r/beta subtract an image that is no longer represented. The code's choice is the consistent one and avoids r rows of size |X|/(2e); it is a statistics change on the saturated hubs only, unrecorded. Recommend: keep, record in DISCREPANCIES as item 9. |
+| 436-462 | birth [1.2, 1.6(ii)B] | three-leg form correct: `own` (E:454) is (1.18) at P = I (hub a = i: (2 e d + X_aa) u_ij + d X_ij; hub a = j: e_j u_ji^2 + u_ji X_ji); beta (E:456) = k3 - dv^3 z3 - (3 e d^2 + 3 d X_aa) is the exact-removal form of (1.11) (3 H_ii^2 - 3 F_ii^2 = 3 e d^2 + 3 d X_aa). Star birth and its charge to R, beta as M:367-371. **Convention difference, saturated hubs (adm and not sq):** the code drops their u/X rows AND leaves them out of `own` and of the 3 e d^2 + 3 d X_aa term, so the represented (2,1) slice at birth equals post on those rows (self-consistent). submission 337479 computes r and beta in M:355-369 with the FULL H row (incl. the huge F part), then zeroes the H row in B:2643-2645 and masks the packet to H-carrying hubs (B:905-906), so its r/beta subtract an image that is no longer represented. The code's choice is the consistent one and avoids r rows of size |X|/(2e); it is a statistics change on the saturated hubs only, unrecorded. Recommend: keep, record in DISCREPANCIES as item 9. |
 | 299-347 | loop order [0] | same as M:476-531/405-462: deposit -> star images -> TC + PK4 -> advance -> birth -> TC stash (b before the star image, E:313/332 = M:493) -> next frame -> response_input -> accumulate -> record_birth. Radius via lgamma (E:346) equals MM:226-244 to rounding. |
 | 464-483 | terminal [5.5] | same as M:268-300 (ga on every column, E_GA, PK4 single+legs on the terminal legs = legs[0] after the terminal rotation, TC, z3^2/72 term). |
 | 578-630 | accumulate [1.3] | same: gating of old legs and RIGHT by dv (E:591-593, B:2688-2692), newborn ungated, P = W rows on hubs (E:601 = B:2479-2482), RIGHT transport, R = LEFT RIGHT, coefficient rows (E:610-612) = (1.18) + 2 P o R + beta P o P, z3 (E:615) = (1.13) in exact-removal form, trace (E:616-622) = (1.14). |
 | 632-644 | repair fit [1.3(c)] | same as B:699-739, 2714-2725 with the hub indicator as conservation column (ones on retained rows); v on hub columns (colsum - delta)/(m-1), elsewhere colsum/m; beta += 3 (delta - v). |
-| 647-673 | deposit [1.4] | same, including the undo: copies are taken before the directional fold (E:731-732) and restored after the PK4 fold (E:670-671), so the PK4 fold survives only on the newest source's C_u and C_X rows (the split of ex_34's CU row). This matches B:2052-2058 + 2134-2136 (the plain undo list covers COMB2 rows of all old sources and the newest CP row; only the newest CU row keeps the PK4 fold). **SPEC 1.4 and 3.3 said "persistent on all rows": SPEC was wrong, corrected now.** |
+| 647-673 | deposit [1.4] | same, including the undo: copies are taken before the directional fold (E:731-732) and restored after the PK4 fold (E:670-671), so the PK4 fold survives only on the newest source's C_u and C_X rows (the split of submission 337479's CU row). This matches B:2052-2058 + 2134-2136 (the plain undo list covers COMB2 rows of all old sources and the newest CP row; only the newest CU row keeps the PK4 fold). **SPEC 1.4 and 3.3 said "persistent on all rows": SPEC was wrong, corrected now.** |
 | 676-752 | E6 [4] | same: x_leg = Leg.u for u, X, P and xr = LEFT (RIGHT u) (B:2287-2294); chain with rho, the newest row of xr gets -rho dvec_gross (B:2309, prev[3] = gross dvec) and the fold uses dvec_net (B:2102, prev[4]); read, radial image and dga (E:702-718 = B:2346-2375). The three-leg fold (E:738-741) is the mixed contraction (., u, .) of e Sym(P,u,u) + (1/2) Sym6(P,u,X) + Sym(P,P,R) + beta P^3: C_u += e (xP u + xu P) + (xX P + xP X)/2, C_X += (xu P + xP u)/2, C_P += e xu u + (xX u + xu X)/2 + xP R + (beta xP + xr) P, RREAD += (xP P)^T LEFT; checked against B:2092-2100, 2116 with H = sqrt(e) u + X/(2 sqrt e). Correct. |
 | 755-795 | newest TC [2.1-2.4] | same up to the two recorded decisions. M = e u (E:785): correct, see (b)1. cv = e v d - a1/2 (E:784) = B:1516 with _tc_fdiag -> 0. Zp, Qt, dq, cp, s, cpf, ch (E:787-794) = B:1517-1529 with the fold on the u leg only (ch = 3 e W Qt against u^(t) = (C d) W). Hub rows = adm (dv > 0.01) where the plain uses COL (dv > 0.04): A's open question 3; the rows in between carry Zp ~ dv so the effect is second order. qt_tc = qt - dcf^T (E:762) = B:1769-1776. |
 | 797-829 | Horner history query [2.5] | same as B:1946-2024 for dense sources: sources older than the window enter at generation A with legs[A] (gated legs at layer t-A), the P identity of source t-g-1 enters at the step to generation g, lifted by W_(t-g) o dv_(t-g) (E:821 = B:2003), H entries via legs[g]; qh[g-2] is the query of the TC whose newborn is source t-g (E:825-828: chain[g-2]["k_in"] = t-g, checked). |
@@ -33,7 +33,7 @@ Checked mechanism by mechanism (SPEC section in brackets). "same" = same statist
 | 888-961 | PK4 [3] | same as K:206-498: live = (e > 0) & sq (K:257), g' = u + (X - coef P)/(2e) = isq H - de P, cn' with the self entry zeroed, 6V/4c31/4f3 (K:286-288, incl. `ov - m^2` as in K:287), powers and image rows (K:293-304), read (K:358-371), single site (K:398-403), fold gradients and the chain rule to (u, X, P) (K:449-497 with isq -> (live, inv2e)). |
 | 967-981 | entry | fine; the stderr print and FLOPS reset are tooling. |
 
-Items that change statistics relative to ex_34 (all intended and recorded except the first):
+Items that change statistics relative to submission 337479 (all intended and recorded except the first):
   S1 saturated-hub r/beta convention (E:451-456; see table) - unrecorded, recommend recording as DISCREPANCIES 9.
   S2 exact F (x) F removal incl. source 0 (measured x0.9998).  S3 no crops/plans/elders; exact SVDs.
   S4 TC hub rows dv > 0.01 instead of COL dv > 0.04 (open question 3).  S5 float64 accumulators (rounding only).
@@ -42,19 +42,19 @@ Items that change statistics relative to ex_34 (all intended and recorded except
 
 1. Correct; SPEC 2.1 and 2.4 were wrong. sqrt(e)(H - L G) = e u + sqrt(e)(F - F1); the exact limit F1 -> F is e u,
    _tc_fdiag -> 0, cv = e v d - a1/2, fold on the u leg only. SPEC 2.1, 2.4 and 1.6(ii) corrected (2026-10-28).
-2. Agree: noise, keep the removal (the model's reading); D1 stands as a recorded exception of ex_34.
+2. Agree: noise, keep the removal (the model's reading); D1 stands as a recorded exception of submission 337479.
 3. Partly agree. A's dense-gram wiring (Q22/4, Q31/6, gra, grc term "as layer 0") is not the plain code's pre-economy
    form either: with a dense gram the s I part of A pushes to s W^T W OFF the diagonal (M:612-613 says exactly this),
    and MF:297-299's gmc term a2 gv d exists only in the diagonal-gram specialisation. So x1.343 measured a hybrid; the
    recorded x1.002 (M:574-577, "-5.5 GF" is not even one full W^T W per layer) belongs to an earlier wiring that cannot
-   be reconstructed from the plain source. The diagonal gram is ex_34's statistic and ships; SPEC 6 updated.
+   be reconstructed from the plain source. The diagonal gram is submission 337479's statistic and ships; SPEC 6 updated.
 4. Agree (CENSUS section 5).
 5. Agree; useful for anyone building an "uncropped" plain reference. Not a property of the clean program.
 6. Agree it is an observation. The clean fix is a float64 X leg or storing X/(2e) (A's open question 2); not now.
 7. Agree to keep rank 4 given the net-32 divergence. Note the divergence was measured without the hub rules; with them
-   it is unmeasured (A says so). Rank 4 is ex_34's statistic either way.
+   it is unmeasured (A says so). Rank 4 is submission 337479's statistic either way.
 8. Agree, with the correction to SPEC 1.7 made now: in completed-square form the H row of a saturated hub is F =
-   X/(2 sqrt e), huge, and ex_34's P-only rule is a numerical necessity, not an economy; in the three-leg form the X
+   X/(2 sqrt e), huge, and submission 337479's P-only rule is a numerical necessity, not an economy; in the three-leg form the X
    row is finite but the PK4 dressed leg divides by e, so PK4's live mask must exclude saturated hubs (as it does,
    E:900). Keeping the X row of saturated hubs in the bank (but not in PK4) would be a measurable variant, not required.
 
@@ -76,7 +76,7 @@ GiB in the same runner, so this is the environment's behaviour; it is under the 
 reductions that change no statistics: (i) pair_power with two preallocated f64 scratch buffers
 (`np.multiply(left[:, None], right[None, :], out=tmp); np.multiply(mats[q], tmp, out=tmp); out += tmp`); (ii) apply the
 directional fold as stored increments and undo by subtraction, or keep the undo copies in one preallocated (3, S, n, n)
-f32 scratch (ex_34's undo also copies, B:2097, 2104); (iii) `del` the birth's f64 temporaries before accumulate.
+f32 scratch (submission 337479's undo also copies, B:2097, 2104); (iii) `del` the birth's f64 temporaries before accumulate.
 Expected effect: tracemalloc peak ~1.3 GiB, RSS noticeably lower (allocator churn is the driver), no MSE change.
 
 ## (d) Cuts toward 800 lines that remove no statistics and no explanatory comments

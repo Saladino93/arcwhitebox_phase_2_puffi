@@ -12,7 +12,7 @@ Runs: isolated process (isolated_rss.py), OMP_NUM_THREADS=4, numpy harness shims
 | 34 | 3.1561e-8 | 6.4 s | 1.71 GiB | 2034.8 | 0.925 |
 | 40 | 3.1669e-8 | 6.7 s | 1.71 GiB | 2034.8 | 0.925 |
 
-Reference on net 99: plain ex_34 statistics (elder cap 320) 1.1051e-8, so K=3 is 2.84x worse in raw MSE there.
+Reference on net 99: plain submission 337479 statistics (elder cap 320) 1.1051e-8, so K=3 is 2.84x worse in raw MSE there.
 The paper's own FLOP formula gives 3.6-4.1 x 2^41; this program meters 0.925 x 2^41 (FlopScope-style m n (2k-1)). The FLOP count is data-independent (no gating of the bank size).
 
 History: the first version peaked at 13.04 GiB RSS on net 99 (same MSE): not an n^3 object but ~7 live copies of the

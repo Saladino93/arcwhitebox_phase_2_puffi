@@ -1,4 +1,4 @@
-"""Dense numpy rewrite of the ex_34 estimator (ARC white-box challenge, submission 337479). README.md next to this file
+"""Dense numpy rewrite of the estimator of submission 337479 (ARC white-box challenge). README.md next to this file
 explains the model, the three ideas that carry it, what is kept and dropped, the memory census and every measured decision.
 
 In short: for z_l = h_(l-1) W_l, h_l = relu(z_l), x ~ N(0, I_n), each hidden layer carries the pre-activation mean mu and
@@ -9,7 +9,7 @@ Mehler series. The input is the sphere (E[chi_n]/sqrt n restores the Gaussian ra
 third cumulants created by the ReLU ("sources", one per hidden layer) are stored over their birth-layer neurons ("hubs") as
 three (n, n) legs u = C dv, X = extra, P = birth direction,
     B_s = sum_a [ e_a Sym(P_a, u_a, u_a) + (1/2) Sym6(P_a, u_a, X_a) + Sym(P_a, P_a, R_a) + beta_a P_a^(x3) ]
-(ex_34's completed square with its spurious F (x) F part removed exactly; R a rank-2 repair plus a conservation column),
+(submission 337479's completed square with its spurious F (x) F part removed exactly; R a rank-2 repair plus a conservation column),
 transported by Leg -> (Leg o dv) W and read at every later layer: the deposit (z3, b, rt), the trace correction TC with its
 two-generation history, the directional response E6 and PK4. A covariance-star component Sym3(v (x) C) rides on the covariance.
 
@@ -33,7 +33,7 @@ TRACE_HISTORY_DEPTH = 3  # the TCs born at the two previous consumers are re-rea
 REPAIR_RANK = 2  # SVD rank of the birth repair; one analytic conservation column is added (stored rank 3)
 REPEATED_INDEX_RANK = 4  # n // 256: rank of the off-diagonal source slice inside the TC's repeated-index image
 HUB_GATE_THRESHOLD, SATURATION_TOLERANCE = 0.01, 0.003  # a hub needs gate > 0.01; gate >= 0.997 keeps only its P leg (README)
-TC_HUB_THRESHOLD = 0.04  # the TC sums over the newborn's hubs with gate above this (ex_34's COL rows)
+TC_HUB_THRESHOLD = 0.04  # the TC sums over the newborn's hubs with gate above this (submission 337479's COL rows)
 
 FLOPS = {"matmul": 0.0, "svd": 0.0, "solve": 0.0}  # tally per prediction, read by the runner as Estimator.flops
 
@@ -154,7 +154,7 @@ def star_slice(v, C): return np.outer(np.diagonal(C), v) + 2.0 * v[:, None] * C 
 def star_trace(v, C): return np.trace(C) * v + 2.0 * mm(C, v)  # noqa: E704  t_j = sum_i S_ij = tr(C) v_j + 2 (C v)_j
 
 
-def star_vector(C, t):  # the v whose partial trace is t: (2 C + tr(C) I) v = t (ex_34's Chebyshev series equals this to eps32)
+def star_vector(C, t):  # the v whose partial trace is t: (2 C + tr(C) I) v = t (submission 337479's Chebyshev series equals this to eps32)
     C = np.asarray(C, F64)
     return solve(2.0 * C + np.trace(C) * np.eye(C.shape[0]), t)
 
@@ -250,7 +250,7 @@ class Engine:
         if rt is None:  # layer 0: no bank trace yet; the partial trace is the column sum of the (zero) slice
             rt = b.sum(0, dtype=F64)
         B = gaussian_relu_basis(fr.sd, fr.z, fr.gate)
-        # core push gm = W^T A W, ga = diag gm + E_GA; the metric W^T W is carried as its diagonal gv (ex_34; dense gram x1.34).
+        # core push gm = W^T A W, ga = diag gm + E_GA; the metric W^T W is carried as its diagonal gv (submission 337479; dense gram x1.34).
         # Layer 0: the sphere's A = -I/(n+2) gives gm = -pc/(n+2) and the dense metric pc.
         if l == 0:
             gm, gram, gv = pc / F32(-(n + 2)), pc, fr.v
@@ -323,7 +323,7 @@ class Engine:
         X_aa = coef_a - 2 e_a d_a (the own (0,0,1) term reproduces post's first order), P = identity; repair R = post - images of the
         incoming slice and of the represented source; beta = kappa3(h) - dv^3 z3 - (3 e d^2 + 3 d X_aa); the covariance-star birth
         charges its slice change to R and beta. Hubs: d > 0.01; saturated hubs (d >= 0.997) keep only P, R, beta, their u, X rows
-        being dropped after R and beta were formed from the full rows (ex_34; REVIEW S1)."""
+        being dropped after R and beta were formed from the full rows (submission 337479; REVIEW S1)."""
         n, pc, S = self.n, fr.pc, M["stats"]
         d, e, f, coef = M["dv"], M["ev"], M["fv"], M["self_coefficient"]
         adm = d > HUB_GATE_THRESHOLD
@@ -369,7 +369,7 @@ LEGS = ("u", "X", "P")  # per source and hub a: u_a = (C dv)_a (Gaussian leg), X
 
 def completion_coefficients(quadratic, x):
     """Per column j: the minimum-norm symmetric cubic tensor with zero repeated-index entries and R(., e, e) = quadratic_j/|x_j|^2,
-    e = x_j/|x_j|; returns (a, e, |x_j|, e^2), a the multiplier defining R (ex_34 B:783-823, transcribed)."""
+    e = x_j/|x_j|; returns (a, e, |x_j|, e^2), a the multiplier defining R (submission 337479 B:783-823, transcribed)."""
     norm = np.sqrt((x * x).sum(0))
     safe = np.where(norm > 0, norm, 1.0)
     e = x / safe
@@ -390,7 +390,7 @@ def completion_coefficients(quadratic, x):
 
 
 def complete_bilinear(quadratic, x, z):
-    """The mixed action R(., x_j, z_j) of the completed tensor for every column j (vector operations only; ex_34 B:826-843)."""
+    """The mixed action R(., x_j, z_j) of the completed tensor for every column j (vector operations only; submission 337479 B:826-843)."""
     a, e, norm, e2 = completion_coefficients(quadratic, x)
     ez = e * z
     dot, third = ez.sum(0), (e2 * ez).sum(0)
@@ -401,7 +401,7 @@ def complete_bilinear(quadratic, x, z):
 
 class RepeatedImage:
     """Repeated-index image of a source-layer (2,1) slice B (TC query triples with two equal indices) on directions Y (rows i at the
-    source layer, columns j): B~ = off-diagonal B at rank REPEATED_INDEX_RANK, dd = diag B - 3 diag B~ (ex_34's rank; README)."""
+    source layer, columns j): B~ = off-diagonal B at rank REPEATED_INDEX_RANK, dd = diag B - 3 diag B~ (submission 337479's rank; README)."""
 
     def __init__(self, B):
         off = np.asarray(B, F64).copy()
@@ -502,7 +502,7 @@ class Bank:
 
     def deposit(self, t, fr, pk4):
         """Deliver (b, z3, rt) at consumer t: directional fold (this deposit only), PK4 fold, slice; the restore from copies taken
-        before the directional fold leaves the PK4 fold only on the newest source's C_u, C_X rows (ex_34's asymmetry)."""
+        before the directional fold leaves the PK4 fold only on the newest source's C_u, C_X rows (submission 337479's asymmetry)."""
         if self.pending is None:
             return np.zeros((self.n, self.n), F32), np.zeros(self.n), None
         pend, self.pending = self.pending, None
@@ -626,7 +626,7 @@ class Bank:
     def prepare_tc(self, qt, st):
         """Newest TC: dq_j = 12 sum_i Zp_ij Qt_ij over the newborn's hubs i; Q = (qt^T + old repair read)/dv_i (the old-source slice
         seen by hub i, un-gated; dv = 0 rows become 0), effc = e (u W) - cv W the newborn's quadratic-response leg (M = e u, the exact
-        limit of ex_34's sqrt(e)(H - L G); cv = M_ii - a1/2 replaces the own-hub pairing), Zp = W o effc - a1 (x) |W_.j|^2/(2(n+4)),
+        limit of submission 337479's sqrt(e)(H - L G); cv = M_ii - a1/2 replaces the own-hub pairing), Zp = W o effc - a1 (x) |W_.j|^2/(2(n+4)),
         Qt = Q - repeated-index image. Fold of theta Q31: cp = 3 effc Qt - 3 cv W Qt + 6 dv x completion plus s W on the P leg,
         s = -3/(n+4) sum_i a1 Qt; ch = 3 e W Qt on the u leg."""
         se, n, kin, W = self.tc_source, self.n, st["k_in"], st["W"]
@@ -722,7 +722,7 @@ class Bank:
 
 # ---- 6. PK4: per-neuron fourth-cumulant corrections read elementwise from the legs ----------------------------------------------
 class PK4:
-    """Per source, g' = u + (X - coef P)/(2 e) (ex_34's dressed leg H/sqrt(e) without its self entry; 0 where e = 0 or no square),
+    """Per source, g' = u + (X - coef P)/(2 e) (submission 337479's dressed leg H/sqrt(e) without its self entry; 0 where e = 0 or no square),
     A0 = P g', A1 = P^2, A2 = g'^2: read_j = sum_a [4 c31 A0 A1 + 4 f3 A0 A2 - p_u A1^2 + 6 V A1 A2] + N_j sum_a [tr0 A0 + tr1 A1 + tr2 A2],
     N_j = sum_a A1: the star, u and (3,1) tree-level families minus their trace-core images."""
 

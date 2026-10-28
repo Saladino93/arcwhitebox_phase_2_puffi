@@ -1,37 +1,37 @@
-# SOURCE_MAP: ex_37 plain estimator (`source/estimator_plain/`)
+# SOURCE_MAP: submission 337631 plain estimator (`source/estimator_plain/`)
 
 This map covers the non-FMM rewrite `source/estimator_plain/` (5,412 lines). It is the source for the 500-800 line
-numpy+BLAS distillation of ex_34 (submission 337479). Paths below are relative to `source/estimator_plain/`. Line
+numpy+BLAS distillation of submission 337479 (submission 337479). Paths below are relative to `source/estimator_plain/`. Line
 ranges are whole functions, from an AST scan of the copied files. Constants are listed with their values at
 width 1024 and depth 16.
 
-## 0. Provenance, and how the plain version relates to ex_34
+## 0. Provenance, and how the plain version relates to submission 337479
 
-- The graded ex_34 package is `source/ex_34/{estimator,bank,fmm,pk4}.py` (3,813 lines, FMM).
-- ex_37 is ex_34 with two changes. In `bank.py:649` the elder-basis SVD cap goes from `5 * n // 16` (320) to
+- The graded submission 337479 package is `source/submission 337479/{estimator,bank,fmm,pk4}.py` (3,813 lines, FMM).
+- submission 337631 is submission 337479 with two changes. In `bank.py:649` the elder-basis SVD cap goes from `5 * n // 16` (320) to
   `n // 4` (256). In `fmm.py` a ten-line final-combine shortcut is deleted, which is FMM arithmetic only. Checked
-  with `diff`. `estimator.py` and `pk4.py` are byte-identical between ex_34 and ex_37.
-- `estimator_plain` is the ex_37 refactor rewritten without FMM, caches or round-trip machinery. Its README claims
-  rounding-level equivalence. Its cap is `n // 4` at `bank.py:1340`, so **its statistics are ex_34 except for the
+  with `diff`. `estimator.py` and `pk4.py` are byte-identical between submission 337479 and submission 337631.
+- `estimator_plain` is the submission 337631 refactor rewritten without FMM, caches or round-trip machinery. Its README claims
+  rounding-level equivalence. Its cap is `n // 4` at `bank.py:1340`, so **its statistics are submission 337479 except for the
   elder cap (256 instead of 320).**
 - Measured on net 99 with `scripts/numpy_harness.py` (unmetered; FMM forced to plain BLAS); details in
   RUN_PLAIN_NET99.md:
 
   | variant | final-layer MSE |
   | --- | ---: |
-  | ex_34 as graded | 1.10649e-8 |
-  | ex_34 with the cap set to 256 (scratch copy) | 1.11861e-8 |
+  | submission 337479 as graded | 1.10649e-8 |
+  | submission 337479 with the cap set to 256 (scratch copy) | 1.11861e-8 |
   | plain (cap 256) | 1.11783e-8 |
   | plain with the cap set to 320 (scratch copy) | 1.10513e-8 |
 
-  plain / (ex_34 with cap 256) = 0.9993 and (plain with cap 320) / ex_34 = 0.9988, both rounding level. The cap alone
-  accounts for +1.09 % MSE on net 99. **To reproduce ex_34's statistics, set `bank.py:1340` to `5 * n // 16`.**
+  plain / (submission 337479 with cap 256) = 0.9993 and (plain with cap 320) / submission 337479 = 0.9988, both rounding level. The cap alone
+  accounts for +1.09 % MSE on net 99. **To reproduce submission 337479's statistics, set `bank.py:1340` to `5 * n // 16`.**
 - Version note: `requirements-dev.txt` pins numpy 2.4.6. The local venv has numpy 2.2.6 (Accelerate),
   flopscope 0.12.3 and whestbench 0.16.2.
 
-### ex_34 flag names and their plain equivalents
+### submission 337479 flag names and their plain equivalents
 
-| ex_34 (`source/ex_34`) | plain | value |
+| submission 337479 (`source/submission 337479`) | plain | value |
 | --- | --- | --- |
 | `SWITCH_AGE`, `EARLY`, `AGE_SWITCH_MAX_BIRTH` | `ELDER_SWITCH_AGES`, `EARLY_BIRTH_COUNT`, `LAST_ELDER_BIRTH` (bank.py:307,333) | (6, 7), 4, 7 |
 | `REPAIR_RANK` (KSVD repair) | `REPAIR_RANK` (bank.py:307) + conservation column: `Bank.rank = 3` | 2 (+1) |
@@ -41,7 +41,7 @@ width 1024 and depth 16.
 | `SLICE_ROWS, SLICE_SAT, SLICE_UROW="fill"` (Lane L1) | `_slice_row_plan` + `_fill_omitted_rows`; `SLICE_SATURATION_TOLERANCE` (bank.py:368) | on, 0.015 |
 | `TCP_START`, `TERM_TC_TAU`, `TCH` | `TCP_START`, `TERM_TC_TAU`, `TRACE_HISTORY_DEPTH` (bank.py:343,346,351) | 4, 0.3, 3 |
 | `TC_SLICE_FOLD`, `HIST_FOLD`, `HF_LITE_ROWS` | `_deposit_folded_slice`, `_history_fold_coefficients`, `_history_fold_lite` | always on |
-| `SB, _SB_TAU2, _SB_COND`; cap `5n/16` | shared elder basis; `SHARED_BASIS_TAIL_TOLERANCE`, `SHARED_BASIS_CONDITION_LIMIT` (bank.py:375,380); cap `n//4` (bank.py:1340) | 2^-8, 2^11.5; **256 (ex_34: 320)** |
+| `SB, _SB_TAU2, _SB_COND`; cap `5n/16` | shared elder basis; `SHARED_BASIS_TAIL_TOLERANCE`, `SHARED_BASIS_CONDITION_LIMIT` (bank.py:375,380); cap `n//4` (bank.py:1340) | 2^-8, 2^11.5; **256 (submission 337479: 320)** |
 | `SB_E1`, `SB_E2` | exact reassociations kept inline (bank.py:1352-1374, 1424-1436) | always on |
 | `HUB_EPS` | `HUB_DROP_TOLERANCE` (bank.py:2770) | 1e-3 |
 | `E_TU, E_RADIAL='mehler1', E_PROP`; E_GA | `_prepare_directional_response`, `_read_directional_response`, `_apply_temporary_directional_fold`; `response_corrections` | always on |
@@ -50,15 +50,15 @@ width 1024 and depth 16.
 | `PK4_FAMS, PK4_AGES, PK4_TERM_AGES, PK4_CORESUB="lite"`, pk4 `FOLD` | `FourthCumulantCorrections(hidden_ages=(1,16), terminal_ages=(1,64))` (pk4.py:179-180): star/u/(3,1) families minus the trace-core image; `apply_persistent_response_fold` | every age is read at depth 16 |
 | `NFOLD = 21`, `ROWS` (Mehler coefficient buffer, "CB") | `FOLDED_PAIR_COUNT = 21`, `PAIR_ORDERS` (moment_formulas.py:215-248); `MehlerRows.stack` | 21 matrices out of 26 rows |
 | `GAUGE_POLICY = "unit_prevariance"` | `_normalize_layer` (always) | |
-| `STAR_AGES/STAR_TERM` Gaussian star history | gone: PK4's star family covers every age in ex_34 too (`_star_owned`) | |
+| `STAR_AGES/STAR_TERM` Gaussian star history | gone: PK4's star family covers every age in submission 337479 too (`_star_owned`) | |
 
 Names in the brief that do not exist as such:
-- **`PK4_MAX_AGE = 5`** is not a constant in ex_34 or in the plain version. PK4 reads every source age at every
+- **`PK4_MAX_AGE = 5`** is not a constant in submission 337479 or in the plain version. PK4 reads every source age at every
   consumer: hidden window (1, 16) widened to every young source, terminal window (1, 64).
 - **"NegativeBank rank n/32"**: the negative packet has rank one per source (`_svd_topk(completion, 1)`,
   moments.py:343). The n/32 figure appears only in the screening history of the TC repeated-index rank, which is
   n/256 (bank.py:759-761).
-- ex_34's `RECOMP_AGE = 4` / `n // 8` recompression and its per-source `n/4` / `3n/16` bases (ex_34 bank.py:17,
+- submission 337479's `RECOMP_AGE = 4` / `n // 8` recompression and its per-source `n/4` / `3n/16` bases (submission 337479 bank.py:17,
   516, 1304) belong to the per-source elder path. The shared basis replaces that path, and the plain version keeps
   only the shared one.
 
@@ -106,7 +106,7 @@ MF = `moment_formulas.py`, B = `bank.py` (class `Bank` unless noted), K = `pk4.p
 | Negative packet bank | B:`NegativeSquareBank` 858-1007 (`append` 899-909, `advance` 911-955, `block` 984-1007, `hist_block` 962-977) | Removes the spurious Sym(P, F, F): K = sum L_a^2 P_a, rows [K; G] transported and gated. Slice = -(2 K_i G_i G_j + G_i^2 K_j); diagonal -3 G^2 K. The first source has no packet (XXX B:869). | rank 1 per source |
 | Young-source transport (LEG2) | B:`_transport_dense_legs` 2727-2764; B:`_transport` 1171-1183; B:`_gate_history` 2663-2701; fresh P leg B:2477-2484 | Gates every young H/P leg by the source layer's corrected gate dv, then multiplies by W over the COL rows (dv > 0.04) and forms only the S columns (next Gaussian gate > 1e-3). The fresh P leg is just the retained rows of W. Dominant cost. | `THIN_TAU = 0.04`, `TRANSPORT_OUTPUT_THRESHOLD = 1e-3`; LEG2 = `TRACE_HISTORY_DEPTH + 1 = 4` generations of (2(L-1), n, n) |
 | Repair transport | B:`accumulate` 2490-2503 | RIGHT (s, 3, n) for every source, elders included, is gated and multiplied by the full W. RECON = LEFT @ RIGHT (s, n, n). | none |
-| Elder shared basis G | B:`_gate_history` 2685-2700 (switch rule); B:`_switch_to_shared_basis` 1312-1378; `_factor_shared_basis` 1380-1392; `_reorthogonalize_shared_basis` 1394-1411; `_transport_shared_basis` 1413-1439; `_shared_slice_coefficients` 1441-1450; `_elder_slice_families` 1251-1276 | At age 6 (births < 4) or 7 (later), only for births <= 7 and layer <= L-3, a source's legs become coordinates Y on one shared basis G (d x n). The first entrant sets G by truncated SVD with a 2^-8 tail-energy rule, capped and 64-padded. Later entrants get least-squares Y = M Q R^-T (SB_E1). Only G is transported, and the elders' dense legs are rebuilt as Y @ G (on S) because the readouts are elementwise. | `EARLY_BIRTH_COUNT = 4`, `ELDER_SWITCH_AGES = (6, 7)`, `LAST_ELDER_BIRTH = 7`, cap `n//4` = 256 (ex_34: 320) at B:1340, `SHARED_BASIS_TAIL_TOLERANCE = 2^-8`, `SHARED_BASIS_CONDITION_LIMIT = 2^11.5` |
+| Elder shared basis G | B:`_gate_history` 2685-2700 (switch rule); B:`_switch_to_shared_basis` 1312-1378; `_factor_shared_basis` 1380-1392; `_reorthogonalize_shared_basis` 1394-1411; `_transport_shared_basis` 1413-1439; `_shared_slice_coefficients` 1441-1450; `_elder_slice_families` 1251-1276 | At age 6 (births < 4) or 7 (later), only for births <= 7 and layer <= L-3, a source's legs become coordinates Y on one shared basis G (d x n). The first entrant sets G by truncated SVD with a 2^-8 tail-energy rule, capped and 64-padded. Later entrants get least-squares Y = M Q R^-T (SB_E1). Only G is transported, and the elders' dense legs are rebuilt as Y @ G (on S) because the readouts are elementwise. | `EARLY_BIRTH_COUNT = 4`, `ELDER_SWITCH_AGES = (6, 7)`, `LAST_ELDER_BIRTH = 7`, cap `n//4` = 256 (submission 337479: 320) at B:1340, `SHARED_BASIS_TAIL_TOLERANCE = 2^-8`, `SHARED_BASIS_CONDITION_LIMIT = 2^11.5` |
 | Accumulate (z3 diagonal, trace, pending) | B:`accumulate` 2382-2607 | Admit, directional pre-read, gate + switch, install the fresh source + repair, plans, transport legs / P / G / repair / negative, then `_write_slice_coefficients` (CU = 2 P∘H, CP = H∘H + 2 P∘R + beta P∘P, B:2609-2614). z3_j = 3 sum(P H^2 + P^2 R) + beta P^3 - negdiag (B:2505-2519). Partial trace from COMB2 row sums + repair + elders (B:2573-2593), net of the represented diagonal. Leaves `pending`. Terminal: adds z3 on the terminal plan and returns before the LEG2 rotation. | `TERMINAL_COLUMN_THRESHOLD = 0.01` (terminal plan, weight \|z\| exp(0.5 - z^2/2)) |
 | Deposit ((2,1) slice) | B:`deposit` 2037-2058; B:`_deposit_slice` 2122-2169 | Applies the temporary directional fold, then the PK4 persistent fold. The slice block on OUT (Gaussian gate > 0.015) = families C^T @ legs + elders C^T Y @ G + repair rread @ rbf - negative packets, minus the directional covariance-star part. Its diagonal is set to z3. Writes `repeated_bank[l]`, `third_bank[l]`, `trace_override[l]`. Undoes the directional fold. | `THIN_OUT = 0.015` |
 | Lane L1 row plan + fill (SLICE_ROWS) | B:`_slice_row_plan` 1222-1249; B:`_omitted_row_functionals` 2171-2222; B:`_fill_omitted_rows` 393-429; B:`_deposit_cropped_slice` 2224-2264; B:`_scatter2` 432-456 | Forms slice rows only for OUT rows with gate < 1 - 0.015. Omitted saturated rows get the minimum-norm rank-2 fill that reproduces the two Mehler functionals that urow reads (wr = d - t phi, wc = t(1 - d)), computed exactly from the factored bank. Without the fill, final MSE roughly doubles. | `SLICE_SATURATION_TOLERANCE = 0.015` |

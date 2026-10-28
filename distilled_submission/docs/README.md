@@ -1,7 +1,7 @@
 # Documents behind the distilled program
 
 - `SPEC.md`: the estimator's equations in loop order. Line references of the form `M:123`, `B:456`, `K:78`, `MF:`, `MM:` point
-  into the readable non-Strassen rewrite of ex_37 (`estimator_plain/`: moments.py, bank.py, pk4.py, moment_formulas.py,
+  into the readable non-Strassen rewrite of submission 337631 (`estimator_plain/`: moments.py, bank.py, pk4.py, moment_formulas.py,
   moment_math.py), which is archived in the team's research repository; `E:` references point into `../estimator.py`.
 - `CENSUS.md`: FLOP and memory census of the dense design, and the reconciliation of the measured tallies.
 - `REVIEW.md`: line-by-line review of `../estimator.py` against SPEC.md and the graded source.

@@ -19,10 +19,10 @@ only in `bank.py` (the shared elder-basis rank cap) and `fmm.py` (the final Stra
 
 | folder | submission | official score | raw final-layer MSE | FLOP budget used | change |
 |---|---|---:|---:|---:|---|
-| `ex_34` | 337479 | 1.8841e-9 | 1.1742e-8 | 16.04 % | base: shared elder basis (cap 320), slice row repair, exact switch restructuring |
-| `ex_35` | 337563 | 1.8783e-9 | 1.2106e-8 | 15.50 % | elder cap 320 -> 256 (one line) |
-| `ex_36` | 337577 | 1.8671e-9 | 1.1741e-8 | 15.89 % | pointwise Strassen 7-to-4 combine (10 lines) |
-| `ex_37` | 337631 | **1.8608e-9** | 1.2106e-8 | 15.36 % | both edits; our best official score |
+| [`337479`](submissions/337479) | 337479 | 1.8841e-9 | 1.1742e-8 | 16.04 % | base: shared elder basis (cap 320), slice row repair, exact switch restructuring |
+| [`337563`](submissions/337563) | 337563 | 1.8783e-9 | 1.2106e-8 | 15.50 % | elder cap 320 -> 256 (one line) |
+| [`337577`](submissions/337577) | 337577 | 1.8671e-9 | 1.1741e-8 | 15.89 % | pointwise Strassen 7-to-4 combine (10 lines) |
+| [`337631`](submissions/337631) | 337631 | **1.8608e-9** | 1.2106e-8 | 15.36 % | both edits; our best official score |
 
 All four completed 100/100 networks with no failures, max wall 96.8-98.0 s, max residual 0.37 s. Each folder has its own
 README with the full audit, `manifest.json`, `SHA256.txt` and the platform receipt. Graded on whestbench 0.16.x with
@@ -39,7 +39,7 @@ estimate: a fast matrix-multiplication engine, neuron thinning plans padded to S
 for old third-cumulant sources, rank-1 and rank-2 truncations, a grouped Horner recurrence, buffer reuse and cached views.
 
 **`distilled_submission/estimator.py` (807 lines, numpy only, plain `@` products) deliberately uses none of these
-FLOP-saving tricks.** Its one goal is to preserve the logic of the base submission (ex_34): the same closure orders, the
+FLOP-saving tricks.** Its one goal is to preserve the logic of the base submission (337479): the same closure orders, the
 same row structure of the pair law, the same trace core, the same correction schedule, the same hub rules at a birth. What
 it removes is only economy:
 
@@ -48,7 +48,7 @@ it removes is only economy:
   elder basis, no randomized or Krylov SVD;
 - the completed square and its rank-1 "negative packet" are replaced by an exact three-leg form of the same source.
 
-Two low-rank pieces of ex_34 remain because their exact versions failed, and both are stated in the code: the rank-2 repair
+Two low-rank pieces of submission 337479 remain because their exact versions failed, and both are stated in the code: the rank-2 repair
 of a birth (the exact version costs multiplier 1.05) and the rank-4 image inside the trace correction (the exact version
 produced NaN on one development network).
 
@@ -57,10 +57,10 @@ graded submission's cost and would not be competitive; it is not meant to be. It
 
 ### Does it preserve the estimate?
 
-Measured with plain numpy against the graded ex_34 statistics on 20 held-out public networks (indices 600-619 of the
+Measured with plain numpy against the graded submission 337479 statistics on 20 held-out public networks (indices 600-619 of the
 Phase 2 public split), final-layer MSE:
 
-| | distilled | ex_34 statistics | ratio |
+| | distilled | submission 337479 statistics | ratio |
 |---|---:|---:|---:|
 | pooled raw MSE, 20 networks | 1.2253e-8 | 1.2153e-8 | 1.008 |
 | per-network ratio min / median / max | | | 0.941 / 1.008 / 1.091 |
@@ -74,7 +74,7 @@ Within 1 % pooled. The per-network spread is the difference between cropped and 
 A 271-line float64 implementation of ARC's own K=3 SIMPLE estimator (Wu et al., arXiv 2605.05179) in factored form: mean,
 covariance, third cumulant as symmetric CP factors (rank grows by 2n per layer) and one radial fourth-cumulant scalar.
 Validated to 1e-14 against a dense width-64 oracle (`docs/k3_dense_oracle_width64.py`). Multiplier 0.925, pooled raw MSE
-3.55e-8 on the same 20 networks, so the distilled ex_34 is about 2.9x more accurate at a lower FLOP count.
+3.55e-8 on the same 20 networks, so the distilled submission 337479 is about 2.9x more accurate at a lower FLOP count.
 
 ### Reading order
 

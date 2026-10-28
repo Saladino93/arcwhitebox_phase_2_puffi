@@ -1,6 +1,6 @@
-# estimator.py: the ex_34 estimator as one dense numpy program
+# estimator.py: submission 337479 as one dense numpy program
 
-`estimator.py` reproduces the statistics of ex_34 (ARC white-box challenge, submission 337479) in one numpy file with plain
+`estimator.py` reproduces the statistics of submission 337479 (ARC white-box challenge, submission 337479) in one numpy file with plain
 `@` products, every FLOP economy removed. This README holds the explanation the code refers to; `RESULTS.md` the
 measurements; `docs/DISCREPANCIES.md` the places where the plain source, SPEC.md and this program disagree.
 
@@ -13,7 +13,7 @@ and the partial trace rt_j = sum_i b_ij, and the fourth cumulant through a trace
 Sym6(A (x) I) whose partial trace sum_k kappa4(h_i, h_j, h_k, h_k) is exact) plus per-neuron corrections to its diagonal
 q4_i = kappa4(z_i). The ReLU is passed with Gaussian integrals corrected by the first Edgeworth terms (z3 and q4); pairs of
 neurons use a bivariate Mehler (Gram-Charlier) series with 21 rows (the row set and the ROW_FOLD reuse of rows 17/18/20 are
-ex_34's statistics). The terminal layer forms only its mean, h + z3 f/6 + q4 ds4/24 + z3^2 ds6/72.
+submission 337479's statistics). The terminal layer forms only its mean, h + z3 f/6 + q4 ds4/24 + z3^2 ds6/72.
 
 ## The three ideas that carry the deep part
 
@@ -28,8 +28,8 @@ ex_34's statistics). The terminal layer forms only its mean, h + z3 f/6 + q4 ds4
    coupling of the incoming slice, the Mehler second order and Q22 into the square) and P_a (the birth direction, delta_a at
    birth):
        B_s = sum_a [ e_a Sym(P_a, u_a, u_a) + (1/2) Sym6(P_a, u_a, X_a) + Sym(P_a, P_a, R_a) + beta_a P_a^(x3) ].
-   This is ex_34's completed square Sym(P, H, H), H = sqrt(e) u + X / (2 sqrt e), with its spurious F (x) F part (F = X/(2 sqrt e))
-   removed exactly (SPEC 1.6(ii)(B); ex_34 removed it at rank one with a negative packet -Sym(K, G, G) and not at all for
+   This is submission 337479's completed square Sym(P, H, H), H = sqrt(e) u + X / (2 sqrt e), with its spurious F (x) F part (F = X/(2 sqrt e))
+   removed exactly (SPEC 1.6(ii)(B); submission 337479 removed it at rank one with a negative packet -Sym(K, G, G) and not at all for
    source 0). R_a is a rank-2 repair of the remaining (2,1) pair power plus one conservation column that keeps every column
    sum exact; beta_a is the hub's residual diagonal. Legs are transported one layer at a time by the first-order gate law
    kappa3(h) ~ D^(x3) kappa3(z), Leg -> (Leg o dv) W, and read at every later layer:
@@ -38,7 +38,7 @@ ex_34's statistics). The terminal layer forms only its mean, h + z3 f/6 + q4 ds4
    - the **trace correction TC** (consumers 4..15): a kappa4 term produced when the newest source's quadratic response meets
      the third cumulant it inherited from the older sources, dq = 12 sum_i Zp Qt, delivered to q4 and, folded with theta =
      -mu/(3v) into the slice, as b + diag(theta) Q31; the TCs of the two previous consumers are re-read through the nested
-     history query (ex_34's Horner form; with no elders it equals the direct sum of SPEC 2.10 exactly);
+     history query (submission 337479's Horner form; with no elders it equals the direct sum of SPEC 2.10 exactly);
    - the **directional response E6**: the (2,1,1) contraction T(u) along the variance-response direction u = ga1, beyond its
      radial image in the core, chained through the core by rho = 2 kappa/(n+4) and folded into the slice for one deposit;
    - **PK4**: tree-level fourth cumulants (star, u and (3,1) families) read elementwise from the legs minus their trace-core
@@ -49,16 +49,16 @@ ex_34's statistics). The terminal layer forms only its mean, h + z3 f/6 + q4 ds4
 
 ## What is kept and what is dropped
 
-Kept (ex_34's statistics): Edgeworth and Mehler orders, the 21-row structure with ROW_FOLD, the trace core A = T + s I,
+Kept (submission 337479's statistics): Edgeworth and Mehler orders, the 21-row structure with ROW_FOLD, the trace core A = T + s I,
 TCP_START = 4, TRACE_HISTORY_DEPTH = 3, the terminal TC, PK4 families star/u/(3,1) read at every age, the PK4 fold persistent
-versus the directional fold undone (ex_34's asymmetry: the restore leaves the PK4 fold only on the newest source's C_u, C_X
+versus the directional fold undone (submission 337479's asymmetry: the restore leaves the PK4 fold only on the newest source's C_u, C_X
 rows), the z3^2/72 terminal term, the edge block only before layer 4, the TC repeated-index image at rank n/256 = 4, the
 rank-2 repair + conservation column, the diagonal metric gram after layer 0, and the two hub rules of a birth (a neuron is a
 hub if its corrected gate exceeds 0.01; a hub with gate >= 0.997 keeps only its P leg, no square, no PK4) together with the
 TC's hub rows (gate > 0.04). The hub rules are also the closure's numerical guard: without them the PK4 dressed leg
 (X - coef P)/(2e) of hubs whose Edgeworth-corrected curvature nearly cancels reaches 1e2 and the terminal q4 diverges.
 
-Dropped (FLOP economies of ex_34): every crop and thinning plan (COL, S, OUT, row plan and its rank-2 fill, terminal column
+Dropped (FLOP economies of submission 337479): every crop and thinning plan (COL, S, OUT, row plan and its rank-2 fill, terminal column
 plan, core and covariance crops), the 64-padding, the shared elder basis and the switch schedule, the block-Krylov SVD
 (exact LAPACK SVDs instead), the rank-one negative packet (exact removal instead), fused and batched product forms.
 
@@ -90,11 +90,11 @@ entries is ever formed; every product over sources is a per-source loop. Measure
 
 - dense metric gram W^T W instead of its diagonal: x1.34 on net 99, rejected;
 - exact F (x) F removal including source 0: x1.004 vs the completed-square form, accepted; keeping source 0's term x0.9998;
-- the TC's newborn leg content M = e u (the exact limit of ex_34's sqrt(e)(H - L G)); SPEC's first reading e u + X/2 gave x2.3;
+- the TC's newborn leg content M = e u (the exact limit of submission 337479's sqrt(e)(H - L G)); SPEC's first reading e u + X/2 gave x2.3;
 - exact repeated-index image (full off-diagonal slice): x0.9975 on net 99 but divergent on net 32, rank 4 kept;
-- every neuron a hub: 2-6 % worse on four dev nets and divergent on net 33; ex_34's hub rules kept;
-- saturated hubs' r/beta from the full rows (ex_34's hybrid) vs the self-consistent form: x0.990, hybrid kept;
-- TC hub rows dv > 0.04 (ex_34's COL) vs 0.01: x1.0025 (noise), 0.04 kept;
+- every neuron a hub: 2-6 % worse on four dev nets and divergent on net 33; submission 337479's hub rules kept;
+- saturated hubs' r/beta from the full rows (submission 337479's hybrid) vs the self-consistent form: x0.990, hybrid kept;
+- TC hub rows dv > 0.04 (submission 337479's COL) vs 0.01: x1.0025 (noise), 0.04 kept;
 - dense residual leg R (exact repair): not built, multiplier 1.05 with the three-leg form.
 
 ## Tools
@@ -102,5 +102,5 @@ entries is ever formed; every product over sources is a per-source loop. Measure
 `tools/run_net.py <root> <net.npz> [--debug out.npz]` runs one estimator root on one exported net in an isolated process and
 prints raw MSE, per-layer MSE, wall, peak RSS, GF and multiplier (with `--debug` it records per-layer states of the clean
 program by wrapping `Engine.advance`); `tools/export_nets.py <dir> <nets...>` exports nets from the dataset;
-`tools/dump_plain_states.py` records the same states from the plain ex_37 estimator; `tools/compare_states.py` prints the
+`tools/dump_plain_states.py` records the same states from the plain submission 337631 estimator; `tools/compare_states.py` prints the
 relative distances per layer.

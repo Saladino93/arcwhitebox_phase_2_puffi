@@ -1,18 +1,18 @@
-# Pointwise final FMM combine (ex_36)
+# Pointwise final FMM combine (submission 337577)
 
 Exact code uploaded as [submission 337577](https://www.aicrowd.com/challenges/arc-white-box-estimation-challenge-2026/submissions/337577) on 2026-10-21.
 **Graded successfully: official adjusted score 1.8670546715e-9**, final-layer MSE **1.1740799639e-8**,
 at **15.8916%** mean public FLOP budget use. All 100 networks completed with zero failures.
-This is the best official score archived in this repository: 0.5973% below ex_35 and 0.9031% below ex_34.
+This is the best official score archived in this repository: 0.5973% below submission 337563 and 0.9031% below submission 337479.
 
 ## Code and mechanism
 
-This branches directly from [ex_34](../ex_34), not ex_35: it retains the shared elder-basis cap of 320.
+This branches directly from [submission 337479](../337479), not submission 337563: it retains the shared elder-basis cap of 320.
 Only `fmm.py` changes. Removing the final-step dense 7-to-4 matmul shortcut in `_out_batch` restores the
 existing compiled pointwise add/subtract combine. The exact-real linear map is unchanged, but floating-point
 association, routing and billed work can differ. The final combine's ordinary arithmetic drops from 13 to 2
 FLOPs per output at the cost of three additional public arithmetic calls per FMM product.
-`estimator.py`, `bank.py`, `pk4.py` and `LICENSE` are byte-identical to ex_34. Setup-prepared views remain intact.
+`estimator.py`, `bank.py`, `pk4.py` and `LICENSE` are byte-identical to submission 337479. Setup-prepared views remain intact.
 All prediction arithmetic uses public FlopScope operations, with one value per scalar.
 
 ## Official result
@@ -44,7 +44,7 @@ and [fetch receipt](graded/fetch_receipt.json).
 
 On exposed development networks public 560–567, mean per-network adjusted score was **1.8475057890e-9**,
 final-layer MSE **1.1509746118e-8**, and actual public FLOPs **16.0664%** of budget (FlopScope 0.12.3).
-The matched ex_34 adjusted score was 1.8648954074e-9, a 0.9325% development gain. This is not an official score
+The matched submission 337479 adjusted score was 1.8648954074e-9, a 0.9325% development gain. This is not an official score
 or independent confirmation; the reserved fresh confirmation was not performed.
 
 Source controls, SDK/API and eight smoke cases passed. The isolated cold case passed all 939 checks:
