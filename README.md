@@ -21,12 +21,19 @@ metric, raw MSE x max(0.1, FLOPs / 2^41); 337577 is the better estimator if accu
 in [`distilled_submission/`](distilled_submission/) reproduces the statistics of this family (it was built from 337479, the
 base the two selected submissions descend from, with the cap set to 320, i.e. the 337577 statistics).
 
-This repository has two parts.
+**Switch-off ledger (added 2026-10-30):** [`ablation/`](ablation/) measures every switchable component of the exact uploaded 337631 files,
+one at a time, on 30 fresh networks (IDs 600-629): MSE ratio with a 95 % confidence interval, networks made worse, and billed FLOPs
+under the pinned grader stack, with the scripts and per-network results to reproduce it. Spherical input x1.056, trace contraction
+x1.193, its history x1.094, tree-level fourth cumulants x1.059, slice folds x1.049, directional response x1.042; the shared elder
+basis and the thinning thresholds are FLOP economy (dense legs +41 GF for x1.020; thinning off +92 GF for x0.971).
+
+This repository has three parts.
 
 | folder | what it is | lines of Python |
 |---|---|---:|
 | [`submissions/`](submissions/) | the exact source of our graded Phase 2 submissions, as uploaded | ~3,800 each |
 | [`distilled_submission/`](distilled_submission/) | the same estimator rewritten as one readable numpy program, plus the organizers' K=3 estimator in numpy for comparison | 807 + 271 |
+| [`ablation/`](ablation/) | leave-one-component-out ledger of 337631 on 30 fresh networks, with scripts and per-network results | ~200 |
 
 ## `submissions/`: the graded code
 
