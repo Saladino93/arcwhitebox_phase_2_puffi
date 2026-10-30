@@ -21,11 +21,43 @@ metric, raw MSE x max(0.1, FLOPs / 2^41); 337577 is the better estimator if accu
 in [`distilled_submission/`](distilled_submission/) reproduces the statistics of this family (it was built from 337479, the
 base the two selected submissions descend from, with the cap set to 320, i.e. the 337577 statistics).
 
-**Switch-off ledger (added 2026-10-30):** [`ablation/`](ablation/) measures every switchable component of the exact uploaded 337631 files,
-one at a time, on 30 fresh networks (IDs 600-629): MSE ratio with a 95 % confidence interval, networks made worse, and billed FLOPs
-under the pinned grader stack, with the scripts and per-network results to reproduce it. Spherical input x1.056, trace contraction
-x1.193, its history x1.094, tree-level fourth cumulants x1.059, slice folds x1.049, directional response x1.042; the shared elder
-basis and the thinning thresholds are FLOP economy (dense legs +41 GF for x1.020; thinning off +92 GF for x0.971).
+## Switch-off ledger of 337631 (added 2026-10-30)
+
+Every switchable component of the exact uploaded 337631 files, switched off one at a time, on 30 fresh networks (IDs 600-629 of the
+`full` split, never used during development). MSE ratio = geometric mean over the 30 networks of (variant / unmodified) final-layer
+MSE, with a 95 % confidence interval; "worse" = networks whose MSE rose; GF = billed FLOPs under the pinned grader stack
+(whestbench 0.16.2, FlopScope 0.12.3) on networks 600-602 (unmodified file: 335.7 GF). The unmodified file reproduces our stored
+30-network receipt of 337631 within 0.28 % on every network. Full table, exact edits, scripts and per-network results: [`ablation/`](ablation/).
+
+| component switched off | MSE ratio | 95 % CI | worse | dGF |
+|---|---:|---|---:|---:|
+| trace contraction TC (hidden + terminal) | **x1.193** | [1.173, 1.214] | 30/30 | -17.2 |
+| TC Horner history (3 generations) | **x1.094** | [1.080, 1.108] | 30/30 | -9.8 |
+| tree-level fourth cumulants (PK4) | **x1.059** | [1.046, 1.072] | 29/30 | -5.5 |
+| spherical-radial input law (Gaussian input instead) | **x1.056** | [1.052, 1.061] | 30/30 | +0.3 |
+| TC slice fold + history fold | **x1.049** | [1.040, 1.058] | 29/30 | -1.7 |
+| E6 directional response (E_TU, E_PROP) | **x1.042** | [1.025, 1.059] | 24/30 | -3.3 |
+| PK4 fold response | **x1.025** | [1.019, 1.032] | 28/30 | -3.2 |
+| elder compression (every birth keeps dense legs) | x1.020 | [1.007, 1.033] | 22/30 | +41.2 |
+| birth repair rank 2 -> 1 | x1.005 | [1.002, 1.009] | 22/30 | -1.5 |
+| off-diagonal core edge block on every layer | x0.998 | [0.991, 1.006] | 15/30 | +3.9 |
+| terminal z3^2/72 Edgeworth term | x0.997 | [0.995, 0.999] | 9/30 | 0.0 |
+| unit-prevariance gauge (identity gauge instead) | x0.993 | [0.989, 0.997] | 10/30 | -0.7 |
+| lane L1 saturated-row drop + rank-2 refill (dense rows instead) | x0.985 | [0.980, 0.990] | 5/30 | +16.6 |
+| gate thinning (COL / OUT / hub-row thresholds -> 0) | x0.971 | [0.958, 0.985] | 8/30 | +92.5 |
+| elder-basis cap 256 -> 320 (= submission 337577) | x0.969 | [0.963, 0.975] | 0/30 | +9.5 |
+
+The first seven rows are accuracy mechanisms; the last five are FLOP economy (switching them off costs more FLOPs than the MSE
+change is worth under score = MSE x FLOPs/2^41). Rows are single switch-offs of a co-dependent estimator and do not add up.
+Not switchable in this file: the n x n fourth-cumulant trace core, the dense (2,1) slice and the cubic source bank (archived
+replacement measurements in [`distilled_submission/docs/ABLATION_EVIDENCE.md`](distilled_submission/docs/ABLATION_EVIDENCE.md)).
+
+**Note on the unit-prevariance gauge.** The write-up presents it as a main component. On these benchmark networks it is neutral
+to slightly harmful (x0.993 when removed, 0.7 % as stated in the write-up's own ablation, where the gauged estimator is the
+worse of the two numbers). Its value is invariance, not accuracy: under an exact ReLU-preserving rescaling of hidden neurons
+the ungauged estimator degrades 5,000x while the gauged one is unchanged to float32 rounding. The 5.5 % first-layer gain quoted
+next to it in the write-up belongs to the spherical input law (exact per-neuron Gram variances in the first-layer fourth-cumulant
+closure), not to the hidden-layer gauge.
 
 This repository has three parts.
 
